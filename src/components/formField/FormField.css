@@ -1,0 +1,32 @@
+input[type='text'],
+input[type='password'] {
+  width: 90%;
+  height: 40px;
+  border-radius: 5px;
+  outline: 0;
+  -moz-outline-style: none;
+  border: 1px solid #bbb;
+  padding: 0 0 0 10px;
+  font-size: 14px;
+}
+
+input[type='text']:focus,
+input[type='password']:focus {
+  border: 1px solid #3498db;
+}
+
+.form-field {
+  margin-left: 10%;
+  margin-bottom: 25px;
+}
+
+.error-text {
+  margin-right: 10%;
+  color: #e74c3c;
+  font-size: 12px;
+}
+
+.error input[type='text'],
+.error input[type='password'] {
+  border: 1px solid #e74c3c;
+}
