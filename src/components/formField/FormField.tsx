@@ -1,4 +1,5 @@
 import './FormField.css';
+import {InputField} from '../inputField/InputField';
 
 type FormFieldProps = {
   fieldType: string;
@@ -11,7 +12,7 @@ export const FormField = (props: FormFieldProps) => {
 
   return (
     <div className={errorState ? 'error form-field' : 'form-field'}>
-      <input type={fieldType} placeholder={fieldPlaceholder} />
+      <InputField fieldType={fieldType} fieldPlaceholder={fieldPlaceholder} />
       {errorState ? <p className="error-text">Please check</p> : ''}
     </div>
   );
