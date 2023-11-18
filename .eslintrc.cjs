@@ -39,11 +39,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
-
+    'react-refresh/only-export-components': ['warn', {allowConstantExport: true}],
   },
   settings: {
     react: {
