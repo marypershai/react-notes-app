@@ -11,17 +11,17 @@ export const InputField = (props: InputFieldProps) => {
 
   const [viewPasswordState, setViewPasswordState] = useState(false);
 
-  function viewPassword(event): void {
-    if (event.target === event.currentTarget) {
-      setViewPasswordState(prevState => !viewPasswordState);
-      const passwordInput = event.target.previousElementSibling;
+  const viewPassword = (event: React.MouseEvent<HTMLElement>): void => {
+    if (event.target && event.target === event.currentTarget) {
+      setViewPasswordState(() => !viewPasswordState);
+      const passwordInput = (event.target as HTMLElement).previousElementSibling as Element;
       if (passwordInput.getAttribute('type') === 'password') {
         passwordInput.setAttribute('type', 'text');
       } else {
         passwordInput.setAttribute('type', 'password');
       }
     }
-  }
+  };
 
   return (
     <div className="input-wrap">
