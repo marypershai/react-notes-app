@@ -1,0 +1,15 @@
+.form-field {
+  margin-left: 10%;
+  margin-bottom: 25px;
+}
+
+.error-text {
+  margin-right: 10%;
+  color: #e74c3c;
+  font-size: 12px;
+}
+
+.error input[type='text'],
+.error input[type='password'] {
+  border: 1px solid #e74c3c;
+}
