@@ -30,7 +30,7 @@ export const InputField = (props: InputFieldProps) => {
         <a
           href="#"
           className={viewPasswordState ? 'password-control view' : 'password-control no-view'}
-          onClick={(event: React.MouseEvent<HTMLAnchorElement>) => viewPassword(event)}></a>
+          onClick={viewPassword}></a>
       ) : (
         ''
       )}
