@@ -29,8 +29,8 @@ export const InputField = (props: InputFieldProps) => {
       {fieldType === 'password' ? (
         <a
           href="#"
-          className={viewPasswordState ? 'password-control view' : 'password-control no-view'}
-          onClick={viewPassword}></a>
+          onClick={viewPassword}
+          className={viewPasswordState ? 'password-control view' : 'password-control no-view'}></a>
       ) : (
         ''
       )}
