@@ -1,11 +1,10 @@
 import {Button} from '../../components/button/Button';
 import './AuthorizationPage.css';
 import {FormField} from '../../components/formField/FormField';
-import {useContext, useState} from 'react';
-import {LocalizationContext} from '../../services/contexts/LocalizationContext';
+import {useLocalization} from '../../services/hooks/UseLocalization';
 
 export const AuthorizationPage = () => {
-  const {language: loc} = useContext(LocalizationContext);
+  const {language: loc} = useLocalization();
 
   return (
     <div className="login-wrap">

@@ -1,10 +1,10 @@
-import React, {useContext, useState} from 'react';
-import {LocalizationContext} from '../../services/contexts/LocalizationContext';
+import React, {useState} from 'react';
 import {locals} from '../../services/localization/localization';
 import './Localization.css';
+import {useLocalization} from '../../services/hooks/UseLocalization';
 
 export const Localization = () => {
-  const {language, setLanguage} = useContext(LocalizationContext);
+  const {language, setLanguage} = useLocalization();
   const [localState, setLocalState] = useState('en');
 
   const handleChangeLang = event => {

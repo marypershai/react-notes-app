@@ -1,7 +1,6 @@
 import './FormField.css';
 import {InputField} from '../inputField/InputField';
-import {useContext} from 'react';
-import {LocalizationContext} from '../../services/contexts/LocalizationContext';
+import {useLocalization} from '../../services/hooks/UseLocalization';
 
 type FormFieldProps = {
   fieldType: string;
@@ -11,7 +10,7 @@ type FormFieldProps = {
 
 export const FormField = (props: FormFieldProps) => {
   const {fieldType, fieldPlaceholder, errorState} = props;
-  const {language, setLanguage} = useContext(LocalizationContext);
+  const {language, setLanguage} = useLocalization();
 
   return (
     <div className={errorState ? 'error form-field' : 'form-field'}>
