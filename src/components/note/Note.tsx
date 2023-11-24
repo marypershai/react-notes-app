@@ -5,19 +5,37 @@ import {NoteInerface} from '../../services/interfaces/note';
 
 type NoteProps = {
   note: NoteInerface;
+  isPublic: boolean;
 };
 
 export const Note = (props: NoteProps) => {
-  const {isPublic, owner, tags, text, title, color} = props;
+  const {language: loc} = useLocalization();
+  const {note, isPublic} = props;
 
+  const deleteNote = () => {
+    console.log('Delete Note');
+  };
+
+  const editNote = () => {
+    console.log('Edit Note');
+  };
+  console.log('isPublic', isPublic);
   return (
     <div className="note">
       <div>
-        <div>title</div>
+        <div>{note.title}</div>
         <div>icon</div>
       </div>
-      <div>text</div>
-      <div>tags</div>
+      <div>{note.text}</div>
+      <div>{note.tags}</div>
+      {isPublic ? (
+        ''
+      ) : (
+        <div className="note-buttons">
+          <Button text={loc.delete} onClick={deleteNote}></Button>
+          <Button text={loc.edit} onClick={editNote}></Button>
+        </div>
+      )}
     </div>
   );
 };

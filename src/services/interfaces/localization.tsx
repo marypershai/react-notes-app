@@ -11,6 +11,10 @@ export interface Local {
   note_isPublic: string;
   new_note_title: string;
   save: string;
+  private_notes_title: string;
+  public_notes_title: string;
+  delete: string;
+  edit: string;
 }
 
 export interface Localization {

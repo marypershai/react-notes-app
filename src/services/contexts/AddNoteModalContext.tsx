@@ -8,7 +8,7 @@ export type AddNoteModalContextType = {
 export const AddNoteModalContext = createContext<AddNoteModalContextType>(null!);
 
 export function AddNoteModalContextProvider({children}: PropsWithChildren) {
-  const [modalVisibility, setModalVisibility] = useState<boolean>(true);
+  const [modalVisibility, setModalVisibility] = useState<boolean>(false);
 
   const value = useMemo(
     () => ({

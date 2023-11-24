@@ -13,4 +13,8 @@ export const ru: Local = {
   note_color: 'Цвет заметки',
   new_note_title: 'Новая заметка',
   save: 'Сохранить',
+  private_notes_title: 'Персональные заметки',
+  public_notes_title: 'Публичные заметки',
+  delete: 'Удалить',
+  edit: 'Редактировать',
 };
