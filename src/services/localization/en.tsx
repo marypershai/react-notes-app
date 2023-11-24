@@ -7,4 +7,10 @@ export const en: Local = {
   submit: 'Submit',
   cancel: 'Cancel',
   error_field: 'Please check',
+  new_note_title: 'New note',
+  note_color: 'Note color',
+  note_isPublic: 'Public note',
+  note_text: 'Text',
+  note_title: 'Title',
+  save: 'Save',
 };

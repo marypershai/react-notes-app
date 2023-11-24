@@ -4,12 +4,15 @@ import {LocalizationContextProvider} from './services/contexts/LocalizationConte
 
 import {Localization} from './components/localization/Localization';
 import {NotesListPage} from './pages/notesListPage/NotesListPage';
+import {AddNoteModalContextProvider} from './services/contexts/AddNoteModalContext';
 
 function App() {
   return (
     <LocalizationContextProvider>
       <Localization />
-      <NotesListPage />
+      <AddNoteModalContextProvider>
+        <NotesListPage />
+      </AddNoteModalContextProvider>
       {/*<AuthorizationPage />*/}
     </LocalizationContextProvider>
   );

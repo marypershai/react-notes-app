@@ -37,4 +37,13 @@ export const mockNotes: NoteInerface[] = [
     title: 'title4',
     id: 4,
   },
+  {
+    color: 'orange',
+    isPublic: false,
+    owner: 'Samir',
+    tags: ['tag2'],
+    text: 'text4',
+    title: 'title4',
+    id: 5,
+  },
 ];
