@@ -12,8 +12,8 @@ function App() {
     <LocalizationContextProvider>
       <Localization />
       <AddNoteModalContextProvider>
-        <PrivateNotesListPage />
-        {/*  <PublicNotesListPage />*/}
+        {/*<PrivateNotesListPage />*/}
+        <PublicNotesListPage />
       </AddNoteModalContextProvider>
       {/*<AuthorizationPage />*/}
     </LocalizationContextProvider>

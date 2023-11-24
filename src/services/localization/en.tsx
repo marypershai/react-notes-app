@@ -14,7 +14,7 @@ export const en: Local = {
   note_title: 'Title',
   save: 'Save',
   private_notes_title: 'Private Notes',
-  public_notes_title: 'Private Notes',
+  public_notes_title: 'Public Notes',
   delete: 'Delete',
   edit: 'Edit',
 };

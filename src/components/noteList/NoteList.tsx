@@ -27,12 +27,12 @@ export const NotesList = (props: NotesListProps) => {
       <h2>{isPublic ? loc.public_notes_title : loc.private_notes_title}</h2>
       <div className="notes-list">
         {isPublic ? (
+          ''
+        ) : (
           <div className="note  add-note">
             <Button className={'add-btn'} text={'Add note'} onClick={openAddNewNoteModal} />
             {modalVisibility ? <AddNoteModal /> : ''}
           </div>
-        ) : (
-          ''
         )}
         {mockNotesList.map((noteItem: NoteInerface, index) => {
           return <Note note={noteItem} key={noteItem.id} isPublic={isPublic}></Note>;
