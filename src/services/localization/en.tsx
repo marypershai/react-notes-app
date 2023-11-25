@@ -18,4 +18,7 @@ export const en: Local = {
   public_notes_title: 'Public Notes',
   delete: 'Delete',
   edit: 'Edit',
+  read_more: 'Read More',
+  yes: 'Yes',
+  no: 'No',
 };

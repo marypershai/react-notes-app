@@ -4,7 +4,7 @@ import {NoteInerface} from '../../services/interfaces/note';
 import {useContext} from 'react';
 import {AddNoteModalContext} from '../../services/contexts/AddNoteModalContext';
 import {Button} from '../button/Button';
-import {AddNoteModal} from '../addNoteModal/AddNoteModal';
+import {AddNoteModal} from '../modals/addNoteModal/AddNoteModal';
 import {Note} from '../note/Note';
 import './NodeList.css';
 

@@ -1,26 +1,33 @@
-.btn {
+button {
   background: #e74c3c;
   border: none;
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 200;
   cursor: pointer;
   transition: box-shadow 0.4s ease;
-  width: 80%;
-  margin-left: 10%;
-  margin-bottom: 25px;
   height: 40px;
   border-radius: 5px;
   outline: 0;
   -moz-outline-style: none;
+  padding: 0 20px;
 }
 
-.btn:hover {
+button:hover {
   box-shadow: 1px 1px 5px #555;
 }
 
-.btn:active {
+button:active {
   box-shadow: 1px 1px 7px #222;
+}
+
+.login-btn{
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 25px;
+  height: 40px;
+  font-size: 18px;
+  padding: 0;
 }
 
 .add-btn {

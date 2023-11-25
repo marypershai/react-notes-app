@@ -21,10 +21,9 @@ export const Note = (props: NoteProps) => {
     console.log('Edit Note');
   };
 
-  const addToFavorites = () => {
-    console.log('Add To Favorites');
+  const readMore = () => {
+    console.log('Read More');
   };
-  console.log('isPublic', isPublic);
   return (
     <div className="note">
       <div className="note-title" style={{background: note.color}}>
@@ -56,7 +55,7 @@ export const Note = (props: NoteProps) => {
         ) : (
           <div className="note-field">
             <div className="note-field-title">{loc.note_isPublic}</div>
-            <div className="note-field-text">{note.isPublic}</div>
+            <div className="note-field-text">{note.isPublic ? loc.yes : loc.no}</div>
           </div>
         )}
       </div>
@@ -66,6 +65,7 @@ export const Note = (props: NoteProps) => {
         <div className="note-buttons">
           <Button text={loc.delete} onClick={deleteNote}></Button>
           <Button text={loc.edit} onClick={editNote}></Button>
+          <Button text={loc.read_more} onClick={readMore}></Button>
         </div>
       )}
     </div>

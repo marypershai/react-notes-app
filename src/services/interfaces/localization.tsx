@@ -16,6 +16,9 @@ export interface Local {
   public_notes_title: string;
   delete: string;
   edit: string;
+  read_more: string;
+  yes: string;
+  no: string;
 }
 
 export interface Localization {

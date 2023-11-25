@@ -1,13 +1,13 @@
-import {useLocalization} from '../../services/hooks/UseLocalization';
+import {useLocalization} from '../../../services/hooks/UseLocalization';
 import {createPortal} from 'react-dom';
-import {FormField} from '../formField/FormField';
+import {FormField} from '../../formField/FormField';
 import './AddNoteModal.css';
-import {Textarea} from '../textarea/Textarea';
+import {Textarea} from '../../textarea/Textarea';
 import React, {useContext} from 'react';
-import {AddNoteModalContext} from '../../services/contexts/AddNoteModalContext';
-import {Button} from '../button/Button';
-import {LinkButton} from '../linkButton/LinkButton';
-import {Switch} from '../switch/Switch';
+import {AddNoteModalContext} from '../../../services/contexts/AddNoteModalContext';
+import {Button} from '../../button/Button';
+import {LinkButton} from '../../linkButton/LinkButton';
+import {Switch} from '../../switch/Switch';
 
 export const AddNoteModal = props => {
   const {language: loc} = useLocalization();

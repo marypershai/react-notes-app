@@ -1,9 +1,10 @@
 import './Button.css';
+import React from 'react';
 
 type ButtonProps = {
   text: string;
   className?: string;
-  onClick: unknown;
+  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 export const Button = (props: ButtonProps) => {

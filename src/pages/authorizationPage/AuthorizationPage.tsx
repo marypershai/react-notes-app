@@ -12,7 +12,7 @@ export const AuthorizationPage = () => {
       <div className="form">
         <FormField fieldType={'text'} fieldPlaceholder={loc.username} errorState={true} />
         <FormField fieldType={'password'} fieldPlaceholder={loc.password} errorState={false} />
-        <Button text={loc.submit} />
+        <Button text={loc.submit} className={'login-btn'} />
         <a href="#">
           <p>{loc.cancel}</p>
         </a>

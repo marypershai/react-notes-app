@@ -9,14 +9,16 @@ import {PublicNotesListPage} from './pages/publicNotesListPage/PublicNotesListPa
 
 function App() {
   return (
-    <LocalizationContextProvider>
-      <Localization />
-      <AddNoteModalContextProvider>
-        {/*<PrivateNotesListPage />*/}
-        <PublicNotesListPage />
-      </AddNoteModalContextProvider>
-      {/*<AuthorizationPage />*/}
-    </LocalizationContextProvider>
+    <div className="main-container">
+      <LocalizationContextProvider>
+        <Localization />
+        <AddNoteModalContextProvider>
+          <PrivateNotesListPage />
+          {/*<PublicNotesListPage />*/}
+          {/*<AuthorizationPage />*/}
+        </AddNoteModalContextProvider>
+      </LocalizationContextProvider>
+    </div>
   );
 }
 

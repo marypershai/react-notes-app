@@ -18,3 +18,7 @@ a {
   text-align: center;
   color: #3498db;
 }
+
+.main-container{
+  max-width: 1600px;
+}

@@ -18,4 +18,7 @@ export const ru: Local = {
   public_notes_title: 'Публичные заметки',
   delete: 'Удалить',
   edit: 'Редактировать',
+  read_more: 'Детали',
+  yes: 'Да',
+  no: 'Нет',
 };
