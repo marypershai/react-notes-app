@@ -16,6 +16,9 @@ body {
 
 a {
   text-align: center;
-  font-size: 12px;
   color: #3498db;
+}
+
+.main-container {
+  max-width: 1600px;
 }

@@ -1,0 +1,17 @@
+.fancy-checkbox input[type='checkbox'] {
+  display: none;
+}
+
+.fancy-checkbox span:before {
+  color: #31302e;
+  content: '\f005';
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 400;
+  text-decoration: inherit;
+}
+
+.fancy-checkbox input[type='checkbox']:checked ~ span:before {
+  content: '\f005';
+  font-weight: 900;
+}

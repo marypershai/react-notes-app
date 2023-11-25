@@ -1,0 +1,26 @@
+import {Local} from '../interfaces/localization';
+
+export const en: Local = {
+  username: 'Username',
+  password: 'Password',
+  login_title: 'Login',
+  submit: 'Submit',
+  cancel: 'Cancel',
+  error_field: 'Please check',
+  new_note_title: 'New note',
+  note_color: 'Note color',
+  note_isPublic: 'Public note',
+  note_text: 'Text',
+  note_title: 'Title',
+  note_tags: 'Tags',
+  save: 'Save',
+  private_notes_title: 'Private Notes',
+  public_notes_title: 'Public Notes',
+  delete: 'Delete',
+  edit: 'Edit',
+  read_more: 'Read More',
+  yes: 'Yes',
+  no: 'No',
+  delete_notification: 'Are you sure?',
+  delete_modal_title: 'You want to delete the note',
+};

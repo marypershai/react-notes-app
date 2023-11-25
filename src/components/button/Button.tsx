@@ -1,11 +1,18 @@
 import './Button.css';
+import React from 'react';
 
 type ButtonProps = {
   text: string;
+  className?: string;
+  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
 export const Button = (props: ButtonProps) => {
-  const {text} = props;
+  const {text, className = 'btn', onClick} = props;
 
-  return <button>{text}</button>;
+  return (
+    <button className={className} onClick={onClick}>
+      {text}
+    </button>
+  );
 };
