@@ -19,6 +19,8 @@ export interface Local {
   read_more: string;
   yes: string;
   no: string;
+  delete_notification: string;
+  delete_modal_title: string;
 }
 
 export interface Localization {

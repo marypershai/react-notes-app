@@ -67,7 +67,7 @@
   font-weight: 600;
   color: #403b3b;
 }
-.note-buttons{
+.note-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;

@@ -1,17 +1,17 @@
 import {useLocalization} from '../../../services/hooks/UseLocalization';
 import {createPortal} from 'react-dom';
-import {FormField} from '../../formField/FormField';
-import './AddNoteModal.css';
-import {Textarea} from '../../textarea/Textarea';
+import './DeleteModal.css';
 import React, {useContext} from 'react';
-import {AddNoteModalContext} from '../../../services/contexts/AddNoteModalContext';
 import {Button} from '../../button/Button';
 import {LinkButton} from '../../linkButton/LinkButton';
-import {Switch} from '../../switch/Switch';
+import {DeleteNoteModalContext} from '../../../services/contexts/DeleteNoteModalContext';
 
-export const AddNoteModal = () => {
+type DeleteModalProps = {
+  note_id: number;
+};
+export const DeleteModal = (props: DeleteModalProps) => {
   const {language: loc} = useLocalization();
-  const {modalVisibility, setModalVisibility} = useContext(AddNoteModalContext);
+  const {modalVisibility, setModalVisibility} = useContext(DeleteNoteModalContext);
 
   const closeModal = (event: React.MouseEvent) => {
     if (event.target === event.currentTarget) {
@@ -23,28 +23,17 @@ export const AddNoteModal = () => {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h3 className="modal-title">{loc.new_note_title}</h3>
+            <h3 className="modal-title">{loc.delete_modal_title}</h3>
             <a title="Close" className="close" onClick={closeModal}>
               ×
             </a>
           </div>
           <div className="modal-body">
-            <FormField
-              fieldType={'text'}
-              fieldPlaceholder={loc.note_title}
-              label={loc.note_title}
-            />
-            <Textarea />
-            <FormField
-              fieldType={'color'}
-              fieldPlaceholder={loc.note_color}
-              label={loc.note_color}
-            />
-            <Switch></Switch>
+            <p>{loc.delete_notification}</p>
           </div>
 
           <div className="modal-buttons">
-            <Button text={loc.save} onClick={closeModal} />
+            <Button text={loc.delete} onClick={closeModal} />
             <LinkButton text={loc.cancel} onClick={closeModal} />
           </div>
         </div>

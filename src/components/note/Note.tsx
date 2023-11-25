@@ -3,6 +3,11 @@ import {useLocalization} from '../../services/hooks/UseLocalization';
 import './Note.css';
 import {NoteInerface} from '../../services/interfaces/note';
 import {AddToFavorites} from '../iconButton/AddToFavorites';
+import {useContext} from 'react';
+import {AddNoteModalContext} from '../../services/contexts/AddNoteModalContext';
+import {DeleteNoteModalContext} from '../../services/contexts/DeleteNoteModalContext';
+import {AddNoteModal} from '../modals/addNoteModal/AddNoteModal';
+import {DeleteModal} from '../modals/deleteModal/DeleteModal';
 
 type NoteProps = {
   note: NoteInerface;
@@ -13,8 +18,10 @@ export const Note = (props: NoteProps) => {
   const {language: loc} = useLocalization();
   const {note, isPublic} = props;
 
+  const {modalVisibility, setModalVisibility} = useContext(DeleteNoteModalContext);
+
   const deleteNote = () => {
-    console.log('Delete Note');
+    setModalVisibility(() => !modalVisibility);
   };
 
   const editNote = () => {
@@ -68,6 +75,7 @@ export const Note = (props: NoteProps) => {
           <Button text={loc.read_more} onClick={readMore}></Button>
         </div>
       )}
+      {modalVisibility ? <DeleteModal /> : ''}
     </div>
   );
 };

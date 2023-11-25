@@ -21,4 +21,6 @@ export const en: Local = {
   read_more: 'Read More',
   yes: 'Yes',
   no: 'No',
+  delete_notification: 'Are you sure?',
+  delete_modal_title: 'You want to delete the note',
 };

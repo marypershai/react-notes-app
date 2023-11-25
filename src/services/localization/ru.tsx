@@ -21,4 +21,6 @@ export const ru: Local = {
   read_more: 'Детали',
   yes: 'Да',
   no: 'Нет',
+  delete_notification: 'Вы уверены?',
+  delete_modal_title: 'Вы хотите удалить заметку',
 };
