@@ -12,6 +12,7 @@ export const en: Local = {
   note_isPublic: 'Public note',
   note_text: 'Text',
   note_title: 'Title',
+  note_tags: 'Tags',
   save: 'Save',
   private_notes_title: 'Private Notes',
   public_notes_title: 'Public Notes',

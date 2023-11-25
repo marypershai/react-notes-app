@@ -11,6 +11,7 @@ export const ru: Local = {
   note_title: 'Заголовок',
   note_isPublic: 'Публичная заметка',
   note_color: 'Цвет заметки',
+  note_tags: 'Теги',
   new_note_title: 'Новая заметка',
   save: 'Сохранить',
   private_notes_title: 'Персональные заметки',

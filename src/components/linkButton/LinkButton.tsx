@@ -1,7 +1,9 @@
+import React from 'react';
+
 type LinkButtonProps = {
   text: string;
   className?: string;
-  onClick: unknown;
+  onClick: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 };
 
 export const LinkButton = (props: LinkButtonProps) => {

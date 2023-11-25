@@ -9,6 +9,7 @@ export interface Local {
   note_title: string;
   note_color: string;
   note_isPublic: string;
+  note_tags: string;
   new_note_title: string;
   save: string;
   private_notes_title: string;

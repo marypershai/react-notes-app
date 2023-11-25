@@ -2,10 +2,9 @@
   position: relative;
   margin: 0 auto;
   background: #ecf0f1;
-  width: 350px;
+  width: 300px;
   border-radius: 5px;
   box-shadow: 3px 3px 10px #333;
-  padding: 15px;
 }
 
 .note:after {
@@ -42,4 +41,27 @@
   );
   height: 5px;
   border-radius: 5px 5px 0 0;
+}
+
+.note-title{
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 6px 6px 0 0;
+  font-weight: bold;
+}
+
+.note-content{
+  padding: 15px;
+}
+
+.note-field{
+  margin-bottom: 20px;
+}
+
+.note-field-title{
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #403b3b;
 }
