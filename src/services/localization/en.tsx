@@ -25,4 +25,7 @@ export const en: Local = {
   delete_notification: 'Are you sure?',
   delete_modal_title: 'You want to delete the note',
   reset_password: 'Reset password',
+  change_password_title: 'Change password',
+  new_password: 'New password',
+  confirm_password: 'Confirm password',
 };

@@ -7,6 +7,7 @@ import {Button} from '../button/Button';
 import {AddNoteModal} from '../modals/addNoteModal/AddNoteModal';
 import {Note} from '../note/Note';
 import './NodeList.css';
+import {Outlet} from 'react-router-dom';
 
 type NotesListProps = {
   isPublic: boolean;
@@ -26,6 +27,7 @@ export const NotesList = (props: NotesListProps) => {
     <div className="notes-list-wrap">
       <h2>{isPublic ? loc.public_notes_title : loc.private_notes_title}</h2>
       <div className="notes-list">
+        <Outlet />
         {isPublic ? (
           ''
         ) : (

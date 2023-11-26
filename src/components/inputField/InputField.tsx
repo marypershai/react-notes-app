@@ -4,10 +4,11 @@ import React, {useState} from 'react';
 type InputFieldProps = {
   fieldType: string;
   fieldPlaceholder: string;
+  id?: string;
 };
 
 export const InputField = (props: InputFieldProps) => {
-  const {fieldType, fieldPlaceholder} = props;
+  const {fieldType, fieldPlaceholder, id} = props;
 
   const [viewPasswordState, setViewPasswordState] = useState(false);
 
@@ -25,7 +26,7 @@ export const InputField = (props: InputFieldProps) => {
 
   return (
     <div className="input-wrap">
-      <input type={fieldType} placeholder={fieldPlaceholder} />
+      <input type={fieldType} placeholder={fieldPlaceholder} id={id} />
       {fieldType === 'password' ? (
         <a
           href="#"

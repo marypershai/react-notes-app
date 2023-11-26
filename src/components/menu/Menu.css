@@ -1,4 +1,4 @@
-nav{
+nav {
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
@@ -9,7 +9,7 @@ nav{
   list-style: none;
 }
 
-.nav-menu a{
+.nav-menu a {
   text-decoration: none;
   color: #403b3b;
   font-weight: 700;
@@ -21,14 +21,14 @@ nav{
 }
 
 .nav-menu a.active,
-.nav-menu a.active:hover{
+.nav-menu a.active:hover {
   color: #e74c3c;
   text-decoration: white;
   background: #fff;
   pointer-events: none;
 }
 
-.nav-menu a:hover{
+.nav-menu a:hover {
   background: #e74c3c;
   color: white;
 }
