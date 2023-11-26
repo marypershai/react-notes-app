@@ -1,29 +1,30 @@
-ul{
-    display: flex;
-    gap: 30px;
-    list-style: none;
+ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
 }
 
-a{
-    text-decoration: none;
-    color: #403b3b;
-    font-weight:700;
-    font-size:12px;
-    line-height:32px;
-    padding:0 15px;
-    display: block;
-    border-radius: 5px;
-    font-size: 14px;
+a {
+  text-decoration: none;
+  color: #403b3b;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 32px;
+  padding: 0 15px;
+  display: block;
+  border-radius: 5px;
+  font-size: 14px;
 }
 
-a.active, a.active:hover{
-    color: #e74c3c;
-    text-decoration: white;
-    background:#ddd;
-    pointer-events: none
+a.active,
+a.active:hover {
+  color: #e74c3c;
+  text-decoration: white;
+  background: #ddd;
+  pointer-events: none;
 }
 
-a:hover{
-    background: #e74c3c;
-    color: white;
+a:hover {
+  background: #e74c3c;
+  color: white;
 }

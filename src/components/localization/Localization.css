@@ -1,6 +1,6 @@
-.localization{
+.localization {
   display: flex;
-  justify-content:end ;
+  justify-content: end;
 }
 .localization-wrap {
   height: 30px;

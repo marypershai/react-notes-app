@@ -33,38 +33,41 @@ export const Note = (props: NoteProps) => {
   };
   return (
     <div className="note">
-      <div className="note-title" style={{background: note.color}}>
-        <div>{note.title}</div>
-        {isPublic ? (
-          <div className="star">
-            <AddToFavorites />
-          </div>
-        ) : (
-          ''
-        )}
-      </div>
-      <div className="note-content">
-        <div className="note-field">
-          <div className="note-field-title">{loc.note_title}</div>
-          <div className="note-field-text">{note.title}</div>
-        </div>
-        <div className="note-field">
-          <div className="note-field-title">{loc.note_text}</div>
-          <div className="note-field-text">{note.text}</div>
+      <div className="note-content-wrap">
+        <div className="note-title" style={{background: note.color}}>
+          <div>{note.title}</div>
+          {isPublic ? (
+            <div className="star">
+              <AddToFavorites />
+            </div>
+          ) : (
+            ''
+          )}
         </div>
 
-        <div className="note-field">
-          <div className="note-field-title">{loc.note_tags}</div>
-          <div className="note-field-text">{note.tags.join(', ')}</div>
-        </div>
-        {isPublic ? (
-          ''
-        ) : (
+        <div className="note-content">
           <div className="note-field">
-            <div className="note-field-title">{loc.note_isPublic}</div>
-            <div className="note-field-text">{note.isPublic ? loc.yes : loc.no}</div>
+            <div className="note-field-title">{loc.note_title}</div>
+            <div className="note-field-text">{note.title}</div>
           </div>
-        )}
+          <div className="note-field">
+            <div className="note-field-title">{loc.note_text}</div>
+            <div className="note-field-text">{note.text}</div>
+          </div>
+
+          <div className="note-field">
+            <div className="note-field-title">{loc.note_tags}</div>
+            <div className="note-field-text">{note.tags.join(', ')}</div>
+          </div>
+          {isPublic ? (
+            ''
+          ) : (
+            <div className="note-field">
+              <div className="note-field-title">{loc.note_isPublic}</div>
+              <div className="note-field-text">{note.isPublic ? loc.yes : loc.no}</div>
+            </div>
+          )}
+        </div>
       </div>
       {isPublic ? (
         ''
@@ -75,6 +78,7 @@ export const Note = (props: NoteProps) => {
           <Button text={loc.read_more} onClick={readMore}></Button>
         </div>
       )}
+
       {modalVisibility ? <DeleteModal /> : ''}
     </div>
   );
