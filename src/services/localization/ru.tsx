@@ -23,4 +23,5 @@ export const ru: Local = {
   no: 'Нет',
   delete_notification: 'Вы уверены?',
   delete_modal_title: 'Вы хотите удалить заметку',
+  reset_password: 'Сбросить пароль',
 };

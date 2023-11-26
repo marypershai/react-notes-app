@@ -21,6 +21,7 @@ export interface Local {
   no: string;
   delete_notification: string;
   delete_modal_title: string;
+  reset_password: string;
 }
 
 export interface Localization {

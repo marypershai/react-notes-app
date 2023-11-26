@@ -16,9 +16,11 @@ export const Localization = () => {
   };
 
   return (
-    <select value={localState} onChange={handleChangeLang} className="localization-wrap">
-      <option value={'en'}>EN</option>
-      <option value={'ru'}>RU</option>
-    </select>
+    <div className="localization">
+      <select value={localState} onChange={handleChangeLang} className="localization-wrap">
+        <option value={'en'}>EN</option>
+        <option value={'ru'}>RU</option>
+      </select>
+    </div>
   );
 };
