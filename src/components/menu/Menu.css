@@ -1,14 +1,18 @@
-ul {
+nav{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.nav-menu {
   display: flex;
   gap: 30px;
   list-style: none;
 }
 
-a {
+.nav-menu a{
   text-decoration: none;
   color: #403b3b;
   font-weight: 700;
-  font-size: 12px;
   line-height: 32px;
   padding: 0 15px;
   display: block;
@@ -16,15 +20,15 @@ a {
   font-size: 14px;
 }
 
-a.active,
-a.active:hover {
+.nav-menu a.active,
+.nav-menu a.active:hover{
   color: #e74c3c;
   text-decoration: white;
-  background: #ddd;
+  background: #fff;
   pointer-events: none;
 }
 
-a:hover {
+.nav-menu a:hover{
   background: #e74c3c;
   color: white;
 }

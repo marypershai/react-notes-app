@@ -4,6 +4,7 @@ export const ru: Local = {
   username: 'Имя Пользователя',
   password: 'Пароль',
   login_title: 'Вход',
+  logout: 'Выйти',
   submit: 'Войти',
   cancel: 'Отмена',
   error_field: 'Пожалуйста, проверьте введенные данные',

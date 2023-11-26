@@ -4,6 +4,7 @@ export const en: Local = {
   username: 'Username',
   password: 'Password',
   login_title: 'Login',
+  logout: 'Logout',
   submit: 'Submit',
   cancel: 'Cancel',
   error_field: 'Please check',

@@ -2,6 +2,7 @@ export interface Local {
   username: string;
   password: string;
   login_title: string;
+  logout: string;
   submit: string;
   cancel: string;
   error_field: string;

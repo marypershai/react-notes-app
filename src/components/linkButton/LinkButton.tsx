@@ -1,4 +1,5 @@
 import React from 'react';
+import './LinkButton.css';
 
 type LinkButtonProps = {
   text: string;
