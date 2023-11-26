@@ -1,13 +1,15 @@
 import {useLocalization} from '../../services/hooks/UseLocalization';
 import {mockNotes} from '../../services/data/notes';
 import {NoteInerface} from '../../services/interfaces/note';
-import {useContext} from 'react';
+import React, {useContext} from 'react';
 import {AddNoteModalContext} from '../../services/contexts/AddNoteModalContext';
 import {Button} from '../button/Button';
 import {AddNoteModal} from '../modals/addNoteModal/AddNoteModal';
 import {Note} from '../note/Note';
 import './NodeList.css';
 import {Outlet} from 'react-router-dom';
+import {DeleteModal} from '../modals/deleteModal/DeleteModal';
+import {DeleteNoteModalContext} from '../../services/contexts/DeleteNoteModalContext';
 
 type NotesListProps = {
   isPublic: boolean;
@@ -18,6 +20,8 @@ export const NotesList = (props: NotesListProps) => {
   const {language: loc} = useLocalization();
   const mockNotesList = [...mockNotes];
   const {modalVisibility, setModalVisibility} = useContext(AddNoteModalContext);
+  const {modalVisibility: deleteModalVIsibility, setModalVisibility: setDeleteModalVIsibility} =
+    useContext(DeleteNoteModalContext);
 
   const openAddNewNoteModal = () => {
     setModalVisibility(() => !modalVisibility);
@@ -39,6 +43,7 @@ export const NotesList = (props: NotesListProps) => {
         {mockNotesList.map((noteItem: NoteInerface, index) => {
           return <Note note={noteItem} key={noteItem.id} isPublic={isPublic}></Note>;
         })}
+        {deleteModalVIsibility ? <DeleteModal /> : ''}
       </div>
     </div>
   );

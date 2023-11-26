@@ -8,7 +8,6 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 .notes-list-wrap h2 {
   text-align: center;
