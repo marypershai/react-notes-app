@@ -1,11 +1,40 @@
-import {Button} from '../../components/button/Button';
-import {FormField} from '../../components/formField/FormField';
 import {useLocalization} from '../../services/hooks/UseLocalization';
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useSearchParams} from 'react-router-dom';
+import {Note} from '../../components/note/Note';
+import './DetailsNotePage.css';
 
-export const DetailsNotePage = () => {
+import {mockNotes} from '../../services/data/notes';
+import React from 'react';
+import {NoteInterface} from '../../services/interfaces/note';
+
+export const DetailsNotePage = props => {
   const {language: loc} = useLocalization();
-  const navigate = useNavigate();
+  const mockData = [...mockNotes];
+  const [searchParams, setSearchParams] = useSearchParams();
+  const noteId: string = searchParams.get('noteId');
 
-  return <div>Details</div>;
+  const closeDetails = () => {
+    if (!noteId) return;
+    setSearchParams(searchParams => {
+      searchParams.delete('noteId');
+      return searchParams;
+    });
+  };
+
+  return (
+    <div className="details-page">
+      <div className="details-page-container">
+        <div>
+          <a title="Close" className="details-close" onClick={closeDetails}>
+            ×
+          </a>
+        </div>
+        <Note
+          note={mockData.find((note: NoteInterface) => note.id === +noteId)}
+          isPublic={false}
+          forDetailsPage={true}
+        />
+      </div>
+    </div>
+  );
 };

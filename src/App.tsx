@@ -9,7 +9,7 @@ import {Menu} from './components/menu/Menu';
 
 function App() {
   return (
-    <div className="main-container">
+    <div>
       <Menu />
       <DeleteNoteModalContextProvider>
         <AddNoteModalContextProvider>

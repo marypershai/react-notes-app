@@ -1,23 +1,26 @@
 import {Button} from '../../components/button/Button';
 import {useLocalization} from '../../services/hooks/UseLocalization';
 import './Note.css';
-import {NoteInerface} from '../../services/interfaces/note';
+import {NoteInterface} from '../../services/interfaces/note';
 import {AddToFavorites} from '../iconButton/AddToFavorites';
 import React, {useContext} from 'react';
 import {AddNoteModalContext} from '../../services/contexts/AddNoteModalContext';
 import {DeleteNoteModalContext} from '../../services/contexts/DeleteNoteModalContext';
 import {AddNoteModal} from '../modals/addNoteModal/AddNoteModal';
 import {DeleteModal} from '../modals/deleteModal/DeleteModal';
+import {useLocation, useNavigate, useParams, useSearchParams} from 'react-router-dom';
 
 type NoteProps = {
-  note: NoteInerface;
+  note: NoteInterface;
   isPublic: boolean;
+  forDetailsPage?: boolean;
 };
 
 export const Note = (props: NoteProps) => {
   const {language: loc} = useLocalization();
-  const {note, isPublic} = props;
+  const {note, isPublic, forDetailsPage} = props;
   const {modalVisibility, setModalVisibility} = useContext(DeleteNoteModalContext);
+  const [, setSearchParams] = useSearchParams();
 
   const deleteNote = (event: React.MouseEvent<HTMLElement>): void => {
     if (event.target && event.target === event.currentTarget) {
@@ -30,7 +33,10 @@ export const Note = (props: NoteProps) => {
   };
 
   const readMore = () => {
-    console.log('Read More');
+    setSearchParams(searchParams => {
+      searchParams.set('noteId', note.id.toString());
+      return searchParams;
+    });
   };
   return (
     <div className="note">
@@ -60,7 +66,7 @@ export const Note = (props: NoteProps) => {
             <div className="note-field-title">{loc.note_tags}</div>
             <div className="note-field-text">{note.tags.join(', ')}</div>
           </div>
-          {isPublic ? (
+          {isPublic || forDetailsPage ? (
             ''
           ) : (
             <div className="note-field">
@@ -70,7 +76,7 @@ export const Note = (props: NoteProps) => {
           )}
         </div>
       </div>
-      {isPublic ? (
+      {isPublic || forDetailsPage ? (
         ''
       ) : (
         <div className="note-buttons">

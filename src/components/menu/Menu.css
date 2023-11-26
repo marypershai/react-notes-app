@@ -1,7 +1,8 @@
 nav {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 40px;
+  max-width: 1600px;
+  margin: 0 auto 40px auto;
 }
 .nav-menu {
   display: flex;

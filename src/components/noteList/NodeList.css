@@ -13,3 +13,22 @@
   text-align: center;
   margin-bottom: 20px;
 }
+
+.details-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.details-layout .main-container{
+  margin: 0 30px;
+  max-width: 980px;
+}
+
+.notes-list-wrap{
+  max-width: 1600px;
+}
+
+.details-layout.notes-list-wrap{
+  max-width: 100%;
+
+}

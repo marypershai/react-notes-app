@@ -20,19 +20,13 @@ export const router = createBrowserRouter([
       {
         path: '/public-notes',
         element: <PublicNotesListPage />,
-        children: [
-          {
-            path: '/public-notes/details/:id',
-            element: <DetailsNotePage />,
-          },
-        ],
       },
       {
         path: '/private-notes',
         element: <PrivateNotesListPage />,
         children: [
           {
-            path: '/private-notes/details/:id',
+            path: '',
             element: <DetailsNotePage />,
           },
         ],
