@@ -30,11 +30,10 @@ export const Note = (props: NoteProps) => {
   };
 
   const editNote = () => {
-    console.log(modalContent.visibility);
-    setModalContent(prev => {
-      prev.visibility = !modalContent.visibility;
-      return prev;
-    });
+    setModalContent(prev => ({
+      visibility: !prev.visibility,
+      note,
+    }));
   };
 
   const readMore = () => {

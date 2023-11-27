@@ -8,30 +8,35 @@ import {AddNoteModalContext} from '../../../services/contexts/AddNoteModalContex
 import {Button} from '../../button/Button';
 import {LinkButton} from '../../linkButton/LinkButton';
 import {Switch} from '../../switch/Switch';
-import {NoteInterface} from '../../../services/interfaces/note';
 import {EditNoteModalContext} from '../../../services/contexts/EditNoteModalContext';
+import {simpleNote} from '../../../services/data/simpleNote';
 
 type NoteModalProps = {
   isEdit?: boolean;
-  note?: NoteInterface;
 };
 
 export const NoteModal = props => {
   const {language: loc} = useLocalization();
   const {modalVisibility, setModalVisibility} = useContext(AddNoteModalContext);
   const {modalContent, setModalContent} = useContext(EditNoteModalContext);
-  const {isEdit, note} = props;
+  const {isEdit} = props;
+  const noteObj = isEdit ? modalContent.note : {...simpleNote};
 
   const closeModal = (event: React.MouseEvent) => {
     if (event.target === event.currentTarget) {
       if (isEdit) {
-        setModalContent(prev => {
-          prev.visibility = !modalContent.visibility;
-          return prev;
-        });
+        setModalContent(prev => ({
+          visibility: !prev.visibility,
+          note: prev.note,
+        }));
       } else setModalVisibility(() => !modalVisibility);
     }
   };
+
+  const changePublic = () => {
+    console.log('change public');
+  };
+
   return createPortal(
     <div className="modal" onClick={closeModal}>
       <div className="modal-dialog">
@@ -47,14 +52,22 @@ export const NoteModal = props => {
               fieldType={'text'}
               fieldPlaceholder={loc.note_title}
               label={loc.note_title}
+              value={noteObj.title}
             />
             <Textarea />
+            <FormField
+              fieldType={'text'}
+              fieldPlaceholder={loc.note_tags}
+              label={loc.note_tags}
+              value={noteObj.tags.join(', ')}
+            />
             <FormField
               fieldType={'color'}
               fieldPlaceholder={loc.note_color}
               label={loc.note_color}
+              value={noteObj.color}
             />
-            <Switch></Switch>
+            <Switch value={noteObj.isPublic} onChange={changePublic}></Switch>
           </div>
 
           <div className="modal-buttons">

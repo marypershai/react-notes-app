@@ -5,10 +5,11 @@ type InputFieldProps = {
   fieldType: string;
   fieldPlaceholder: string;
   id?: string;
+  value?: string;
 };
 
 export const InputField = (props: InputFieldProps) => {
-  const {fieldType, fieldPlaceholder, id} = props;
+  const {fieldType, fieldPlaceholder, id, value} = props;
 
   const [viewPasswordState, setViewPasswordState] = useState(false);
 
@@ -26,7 +27,7 @@ export const InputField = (props: InputFieldProps) => {
 
   return (
     <div className="input-wrap">
-      <input type={fieldType} placeholder={fieldPlaceholder} id={id} />
+      <input type={fieldType} placeholder={fieldPlaceholder} id={id} value={value} />
       {fieldType === 'password' ? (
         <a
           href="#"

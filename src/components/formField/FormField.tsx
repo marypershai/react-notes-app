@@ -8,16 +8,17 @@ type FormFieldProps = {
   errorState?: boolean;
   label?: string;
   id?: string;
+  value?: string;
 };
 
 export const FormField = (props: FormFieldProps) => {
-  const {fieldType, fieldPlaceholder, errorState, label, id} = props;
+  const {fieldType, fieldPlaceholder, errorState, label, id, value} = props;
   const {language} = useLocalization();
 
   return (
     <div className={errorState ? 'error form-field' : 'form-field'}>
       {label ? <div className="input-label">{label}</div> : ''}
-      <InputField fieldType={fieldType} fieldPlaceholder={fieldPlaceholder} id={id} />
+      <InputField fieldType={fieldType} fieldPlaceholder={fieldPlaceholder} id={id} value={value} />
       {errorState ? <p className="error-text">{language.error_field}</p> : ''}
     </div>
   );
