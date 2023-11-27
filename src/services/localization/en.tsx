@@ -29,4 +29,5 @@ export const en: Local = {
   new_password: 'New password',
   confirm_password: 'Confirm password',
   favorite_notes_title: 'Favorites notes',
+  edit_note_title: 'Edit note',
 };

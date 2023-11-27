@@ -1,11 +1,9 @@
 import './App.css';
-import {LocalizationContextProvider} from './services/contexts/LocalizationContext';
-import {Localization} from './components/localization/Localization';
 import {AddNoteModalContextProvider} from './services/contexts/AddNoteModalContext';
 import {DeleteNoteModalContextProvider} from './services/contexts/DeleteNoteModalContext';
 import {Outlet} from 'react-router-dom';
 import {Menu} from './components/menu/Menu';
-import {NoteListContextProvider} from './services/contexts/NoteListContext';
+import {EditNoteModalContextProvider} from './services/contexts/EditNoteModalContext';
 
 function App() {
   return (
@@ -13,9 +11,9 @@ function App() {
       <Menu />
       <DeleteNoteModalContextProvider>
         <AddNoteModalContextProvider>
-          {/*<NoteListContextProvider>*/}
-          <Outlet />
-          {/*</NoteListContextProvider>*/}
+          <EditNoteModalContextProvider>
+            <Outlet />
+          </EditNoteModalContextProvider>
         </AddNoteModalContextProvider>
       </DeleteNoteModalContextProvider>
     </div>

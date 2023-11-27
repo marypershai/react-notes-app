@@ -27,6 +27,7 @@ export interface Local {
   new_password: string;
   confirm_password: string;
   favorite_notes_title: string;
+  edit_note_title: string;
 }
 
 export interface Localization {

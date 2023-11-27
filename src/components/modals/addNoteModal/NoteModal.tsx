@@ -1,21 +1,35 @@
 import {useLocalization} from '../../../services/hooks/UseLocalization';
 import {createPortal} from 'react-dom';
 import {FormField} from '../../formField/FormField';
-import './AddNoteModal.css';
+import './NoteModal.css';
 import {Textarea} from '../../textarea/Textarea';
 import React, {useContext} from 'react';
 import {AddNoteModalContext} from '../../../services/contexts/AddNoteModalContext';
 import {Button} from '../../button/Button';
 import {LinkButton} from '../../linkButton/LinkButton';
 import {Switch} from '../../switch/Switch';
+import {NoteInterface} from '../../../services/interfaces/note';
+import {EditNoteModalContext} from '../../../services/contexts/EditNoteModalContext';
 
-export const AddNoteModal = () => {
+type NoteModalProps = {
+  isEdit?: boolean;
+  note?: NoteInterface;
+};
+
+export const NoteModal = props => {
   const {language: loc} = useLocalization();
   const {modalVisibility, setModalVisibility} = useContext(AddNoteModalContext);
+  const {modalContent, setModalContent} = useContext(EditNoteModalContext);
+  const {isEdit, note} = props;
 
   const closeModal = (event: React.MouseEvent) => {
     if (event.target === event.currentTarget) {
-      setModalVisibility(() => !modalVisibility);
+      if (isEdit) {
+        setModalContent(prev => {
+          prev.visibility = !modalContent.visibility;
+          return prev;
+        });
+      } else setModalVisibility(() => !modalVisibility);
     }
   };
   return createPortal(
@@ -23,7 +37,7 @@ export const AddNoteModal = () => {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h3 className="modal-title">{loc.new_note_title}</h3>
+            <h3 className="modal-title">{isEdit ? loc.edit_note_title : loc.new_note_title}</h3>
             <a title="Close" className="close" onClick={closeModal}>
               ×
             </a>

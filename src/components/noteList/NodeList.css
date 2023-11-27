@@ -32,11 +32,12 @@
   max-width: 100%;
 }
 
-.favorites-notes, .favorites-notes a{
+.favorites-notes,
+.favorites-notes a {
   color: white;
   font-size: 16px;
   margin-top: 10px;
 }
-.favorites-notes a:hover{
+.favorites-notes a:hover {
   text-decoration: none;
 }

@@ -4,12 +4,10 @@ import './Note.css';
 import {NoteInterface} from '../../services/interfaces/note';
 import {AddToFavorites} from '../iconButton/AddToFavorites';
 import React, {useContext, useState} from 'react';
-import {AddNoteModalContext} from '../../services/contexts/AddNoteModalContext';
 import {DeleteNoteModalContext} from '../../services/contexts/DeleteNoteModalContext';
-import {AddNoteModal} from '../modals/addNoteModal/AddNoteModal';
-import {DeleteModal} from '../modals/deleteModal/DeleteModal';
-import {useLocation, useNavigate, useParams, useSearchParams} from 'react-router-dom';
-import {NoteListContext} from '../../services/contexts/NoteListContext';
+
+import {useSearchParams} from 'react-router-dom';
+import {EditNoteModalContext} from '../../services/contexts/EditNoteModalContext';
 
 type NoteProps = {
   note: NoteInterface;
@@ -21,6 +19,7 @@ export const Note = (props: NoteProps) => {
   const {language: loc} = useLocalization();
   const {note, isPublic, forDetailsPage} = props;
   const {modalVisibility, setModalVisibility} = useContext(DeleteNoteModalContext);
+  const {modalContent, setModalContent} = useContext(EditNoteModalContext);
   const [, setSearchParams] = useSearchParams();
   const [isFavorite, setIsFavorite] = useState(note.isFavorite || false);
 
@@ -31,7 +30,11 @@ export const Note = (props: NoteProps) => {
   };
 
   const editNote = () => {
-    console.log('Edit Note');
+    console.log(modalContent.visibility);
+    setModalContent(prev => {
+      prev.visibility = !modalContent.visibility;
+      return prev;
+    });
   };
 
   const readMore = () => {

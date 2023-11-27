@@ -29,4 +29,5 @@ export const ru: Local = {
   new_password: 'Новый пароль',
   confirm_password: 'Подтверждения пароля ',
   favorite_notes_title: 'Любимые заметки',
+  edit_note_title: 'Редактирование заметки',
 };

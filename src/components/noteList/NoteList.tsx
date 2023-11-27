@@ -4,14 +4,14 @@ import {NoteInterface} from '../../services/interfaces/note';
 import React, {useContext} from 'react';
 import {AddNoteModalContext} from '../../services/contexts/AddNoteModalContext';
 import {Button} from '../button/Button';
-import {AddNoteModal} from '../modals/addNoteModal/AddNoteModal';
+import {NoteModal} from '../modals/addNoteModal/NoteModal';
 import {Note} from '../note/Note';
 import './NodeList.css';
 import {Outlet, useSearchParams} from 'react-router-dom';
 import {DeleteModal} from '../modals/deleteModal/DeleteModal';
 import {DeleteNoteModalContext} from '../../services/contexts/DeleteNoteModalContext';
-import {NoteListContext} from '../../services/contexts/NoteListContext';
 import {LinkButton} from '../linkButton/LinkButton';
+import {EditNoteModalContext} from '../../services/contexts/EditNoteModalContext';
 
 type NotesListProps = {
   isPublic: boolean;
@@ -21,10 +21,10 @@ type NotesListProps = {
 export const NotesList = (props: NotesListProps) => {
   const {isPublic} = props;
   const {language: loc} = useLocalization();
-  // const {noteList: mockNotesList, setNoteList} = useContext(NoteListContext);
   const mockNotesList = [...mockNotes];
   const {modalVisibility, setModalVisibility} = useContext(AddNoteModalContext);
   const {modalVisibility: deleteModalVisibility} = useContext(DeleteNoteModalContext);
+  const {modalContent} = useContext(EditNoteModalContext);
   const favoritesNotes = mockNotesList.filter((note: NoteInterface) => note.isFavorite);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -70,7 +70,7 @@ export const NotesList = (props: NotesListProps) => {
           ) : (
             <div className="note  add-note">
               <Button className={'add-btn'} text={'Add note'} onClick={openAddNewNoteModal} />
-              {modalVisibility ? <AddNoteModal /> : ''}
+              {modalVisibility ? <NoteModal /> : ''}
             </div>
           )}
           {isFavorites
@@ -81,6 +81,7 @@ export const NotesList = (props: NotesListProps) => {
                 return <Note note={noteItem} key={noteItem.id} isPublic={isPublic}></Note>;
               })}
           {deleteModalVisibility ? <DeleteModal /> : ''}
+          {modalContent.visibility ? <NoteModal isEdit note={modalContent.note} /> : ''}
         </div>
       </div>
       {noteId ? <Outlet /> : ''}
