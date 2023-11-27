@@ -4,6 +4,7 @@ export const ru: Local = {
   username: 'Имя Пользователя',
   password: 'Пароль',
   login_title: 'Вход',
+  logout: 'Выйти',
   submit: 'Войти',
   cancel: 'Отмена',
   error_field: 'Пожалуйста, проверьте введенные данные',
@@ -23,4 +24,10 @@ export const ru: Local = {
   no: 'Нет',
   delete_notification: 'Вы уверены?',
   delete_modal_title: 'Вы хотите удалить заметку',
+  reset_password: 'Сбросить пароль',
+  change_password_title: 'Смена пароля',
+  new_password: 'Новый пароль',
+  confirm_password: 'Подтверждения пароля ',
+  favorite_notes_title: 'Любимые заметки',
+  edit_note_title: 'Редактирование заметки',
 };

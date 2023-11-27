@@ -1,0 +1,15 @@
+.logout {
+  text-decoration: none;
+  color: #403b3b;
+  font-weight: 700;
+  line-height: 32px;
+  padding: 0 15px;
+  display: block;
+  border-radius: 5px;
+  font-size: 14px;
+  background: #fff;
+}
+.logout:hover {
+  background: #e74c3c;
+  color: white;
+}

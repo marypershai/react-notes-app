@@ -1,4 +1,4 @@
-export interface NoteInerface {
+export interface NoteInterface {
   id: number;
   isPublic: boolean;
   owner: string;
@@ -6,4 +6,5 @@ export interface NoteInerface {
   text: string;
   title: string;
   color: string;
+  isFavorite?: boolean;
 }

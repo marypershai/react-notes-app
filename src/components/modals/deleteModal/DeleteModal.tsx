@@ -7,7 +7,7 @@ import {LinkButton} from '../../linkButton/LinkButton';
 import {DeleteNoteModalContext} from '../../../services/contexts/DeleteNoteModalContext';
 
 type DeleteModalProps = {
-  note_id: number;
+  key: number;
 };
 export const DeleteModal = (props: DeleteModalProps) => {
   const {language: loc} = useLocalization();

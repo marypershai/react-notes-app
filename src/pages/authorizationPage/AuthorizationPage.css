@@ -1,6 +1,6 @@
-.login-wrap {
+.authorization {
+  margin-top: 20px auto;
   position: relative;
-  margin: 0 auto;
   background: #ecf0f1;
   width: 350px;
   border-radius: 5px;
@@ -8,23 +8,7 @@
   padding: 15px;
 }
 
-.login-wrap h2 {
-  text-align: center;
-  font-weight: 200;
-  font-size: 2em;
-  margin-top: 10px;
-  color: #34495e;
-}
-
-.login-wrap .form {
-  padding-top: 20px;
-}
-
-.login-wrap .form a p {
-  padding-bottom: 10px;
-}
-
-.login-wrap:after {
+.authorization:after {
   content: '';
   position: absolute;
   top: 0;

@@ -2,6 +2,7 @@ export interface Local {
   username: string;
   password: string;
   login_title: string;
+  logout: string;
   submit: string;
   cancel: string;
   error_field: string;
@@ -21,6 +22,12 @@ export interface Local {
   no: string;
   delete_notification: string;
   delete_modal_title: string;
+  reset_password: string;
+  change_password_title: string;
+  new_password: string;
+  confirm_password: string;
+  favorite_notes_title: string;
+  edit_note_title: string;
 }
 
 export interface Localization {

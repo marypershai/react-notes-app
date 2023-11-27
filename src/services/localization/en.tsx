@@ -4,6 +4,7 @@ export const en: Local = {
   username: 'Username',
   password: 'Password',
   login_title: 'Login',
+  logout: 'Logout',
   submit: 'Submit',
   cancel: 'Cancel',
   error_field: 'Please check',
@@ -23,4 +24,10 @@ export const en: Local = {
   no: 'No',
   delete_notification: 'Are you sure?',
   delete_modal_title: 'You want to delete the note',
+  reset_password: 'Reset password',
+  change_password_title: 'Change password',
+  new_password: 'New password',
+  confirm_password: 'Confirm password',
+  favorite_notes_title: 'Favorites notes',
+  edit_note_title: 'Edit note',
 };

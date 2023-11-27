@@ -1,0 +1,18 @@
+.login-title {
+  text-align: center;
+  font-weight: 200;
+  font-size: 2em;
+  margin-top: 10px;
+  color: #34495e;
+}
+
+.login-form {
+  padding-top: 20px;
+}
+
+.login-form a p {
+  padding-bottom: 10px;
+}
+.link {
+  text-align: center;
+}

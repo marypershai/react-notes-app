@@ -1,0 +1,36 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1600px;
+  margin: 0 auto 40px auto;
+  min-width: 600px;
+}
+.nav-menu {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #403b3b;
+  font-weight: 700;
+  line-height: 32px;
+  padding: 0 15px;
+  display: block;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.nav-menu a.active,
+.nav-menu a.active:hover {
+  color: #e74c3c;
+  text-decoration: white;
+  background: #fff;
+  pointer-events: none;
+}
+
+.nav-menu a:hover {
+  background: #e74c3c;
+  color: white;
+}

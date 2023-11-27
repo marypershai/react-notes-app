@@ -10,15 +10,10 @@ body {
 }
 
 #root {
-  max-width: 100vw;
   margin: 0 auto;
 }
 
 a {
   text-align: center;
   color: #3498db;
-}
-
-.main-container {
-  max-width: 1600px;
 }
