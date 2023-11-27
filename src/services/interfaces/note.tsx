@@ -6,4 +6,5 @@ export interface NoteInterface {
   text: string;
   title: string;
   color: string;
+  isFavorite?: boolean;
 }

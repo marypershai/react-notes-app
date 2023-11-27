@@ -28,4 +28,5 @@ export const ru: Local = {
   change_password_title: 'Смена пароля',
   new_password: 'Новый пароль',
   confirm_password: 'Подтверждения пароля ',
+  favorite_notes_title: 'Любимые заметки',
 };

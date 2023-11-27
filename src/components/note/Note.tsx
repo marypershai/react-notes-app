@@ -3,12 +3,13 @@ import {useLocalization} from '../../services/hooks/UseLocalization';
 import './Note.css';
 import {NoteInterface} from '../../services/interfaces/note';
 import {AddToFavorites} from '../iconButton/AddToFavorites';
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {AddNoteModalContext} from '../../services/contexts/AddNoteModalContext';
 import {DeleteNoteModalContext} from '../../services/contexts/DeleteNoteModalContext';
 import {AddNoteModal} from '../modals/addNoteModal/AddNoteModal';
 import {DeleteModal} from '../modals/deleteModal/DeleteModal';
 import {useLocation, useNavigate, useParams, useSearchParams} from 'react-router-dom';
+import {NoteListContext} from '../../services/contexts/NoteListContext';
 
 type NoteProps = {
   note: NoteInterface;
@@ -21,6 +22,7 @@ export const Note = (props: NoteProps) => {
   const {note, isPublic, forDetailsPage} = props;
   const {modalVisibility, setModalVisibility} = useContext(DeleteNoteModalContext);
   const [, setSearchParams] = useSearchParams();
+  const [isFavorite, setIsFavorite] = useState(note.isFavorite || false);
 
   const deleteNote = (event: React.MouseEvent<HTMLElement>): void => {
     if (event.target && event.target === event.currentTarget) {
@@ -38,6 +40,13 @@ export const Note = (props: NoteProps) => {
       return searchParams;
     });
   };
+
+  const addToFavorites = () => {
+    note.isFavorite = !isFavorite;
+    setIsFavorite(() => !isFavorite);
+    console.log(note);
+  };
+
   return (
     <div className="note">
       <div className="note-content-wrap">
@@ -45,7 +54,7 @@ export const Note = (props: NoteProps) => {
           <div>{note.title}</div>
           {isPublic ? (
             <div className="star">
-              <AddToFavorites />
+              <AddToFavorites isFavorite={isFavorite} onChange={addToFavorites} />
             </div>
           ) : (
             ''

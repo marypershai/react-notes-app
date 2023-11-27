@@ -3,6 +3,7 @@ nav {
   justify-content: space-between;
   max-width: 1600px;
   margin: 0 auto 40px auto;
+  min-width: 600px;
 }
 .nav-menu {
   display: flex;
