@@ -1,51 +1,37 @@
-import {createBrowserRouter, redirect, Route, Routes} from 'react-router-dom';
-import {NotFoundPage} from '../../pages/notFoundPage/NotFoundPage';
-import {PublicNotesListPage} from '../../pages/publicNotesListPage/PublicNotesListPage';
-import {PrivateNotesListPage} from '../../pages/privateNotesListPage/PrivateNotesListPage';
-import {AuthorizationPage} from '../../pages/authorizationPage/AuthorizationPage';
-import App from '../../App';
-import {DetailsNotePage} from '../../pages/detailsNotePage/DetailsNotePage';
-import {ChangePasswordPage} from '../../pages/authorizationPage/changePasswordPage/ChangePasswordPage';
-import {LoginPage} from '../../pages/authorizationPage/loginPage/LoginPage';
+import {Route, Routes} from 'react-router-dom';
+import {pages} from './page';
+import {ProtectedRoute} from './protectedRouter';
 
-export const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    // loader() {
-    //   return redirect('/login');
-    // },
-    errorElement: <NotFoundPage />,
-    children: [
-      {
-        path: '/public-notes',
-        element: <PublicNotesListPage />,
-      },
-      {
-        path: '/private-notes',
-        element: <PrivateNotesListPage />,
-        children: [
-          {
-            path: '',
-            element: <DetailsNotePage />,
-          },
-        ],
-      },
-    ],
-  },
-
-  {
-    path: '/login',
-    element: <AuthorizationPage />,
-    children: [
-      {
-        path: '/login',
-        element: <LoginPage />,
-      },
-      {
-        path: '/login/change-password',
-        element: <ChangePasswordPage />,
-      },
-    ],
-  },
-]);
+export function Router() {
+  return (
+    <Routes>
+      <Route
+        path={pages.homePage.path}
+        element={<ProtectedRoute redirectTo="/login">{pages.homePage.element}</ProtectedRoute>}>
+        <Route
+          path={pages.privateNotesPage.path}
+          element={
+            <ProtectedRoute redirectTo="/login">{pages.privateNotesPage.element}</ProtectedRoute>
+          }>
+          <Route
+            path={pages.detailsNotePage.path}
+            element={
+              <ProtectedRoute redirectTo="/login">{pages.detailsNotePage.element}</ProtectedRoute>
+            }
+          />
+        </Route>
+        <Route
+          path={pages.publicNotesPage.path}
+          element={
+            <ProtectedRoute redirectTo="/login">{pages.publicNotesPage.element}</ProtectedRoute>
+          }
+        />
+      </Route>
+      <Route path={pages.notFoundPage.path} element={pages.notFoundPage.element} />
+      <Route path={pages.authPage.path} element={pages.authPage.element}>
+        <Route path={pages.loginPage.path} element={pages.loginPage.element} />
+        <Route path={pages.changePasswordPage.path} element={pages.changePasswordPage.element} />
+      </Route>
+    </Routes>
+  );
+}
