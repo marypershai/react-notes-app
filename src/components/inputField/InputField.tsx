@@ -6,10 +6,11 @@ type InputFieldProps = {
   fieldPlaceholder: string;
   id?: string;
   value?: string;
+  onChange: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
 };
 
 export const InputField = (props: InputFieldProps) => {
-  const {fieldType, fieldPlaceholder, id, value} = props;
+  const {fieldType, fieldPlaceholder, id, value, onChange} = props;
 
   const [viewPasswordState, setViewPasswordState] = useState(false);
 
@@ -27,7 +28,13 @@ export const InputField = (props: InputFieldProps) => {
 
   return (
     <div className="input-wrap">
-      <input type={fieldType} placeholder={fieldPlaceholder} id={id} value={value} />
+      <input
+        type={fieldType}
+        placeholder={fieldPlaceholder}
+        id={id}
+        value={value}
+        onChange={onChange}
+      />
       {fieldType === 'password' ? (
         <a
           href="#"

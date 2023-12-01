@@ -2,13 +2,20 @@ import {NavLink, useNavigate} from 'react-router-dom';
 import './Menu.css';
 import {useLocalization} from '../../services/hooks/UseLocalization';
 import {LinkButton} from '../linkButton/LinkButton';
+import {useContext} from 'react';
+import {AuthContext} from '../../services/contexts/AuthContext';
+import {Simulate} from 'react-dom/test-utils';
+import reset = Simulate.reset;
 
 export const Menu = () => {
   const {language: loc} = useLocalization();
   const navigate = useNavigate();
+  const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext);
 
   const logout = () => {
-    navigate('/login');
+    setIsAuthenticated(false);
+    localStorage.removeItem('authToken');
+    navigate('/login', {replace: true});
   };
 
   return (

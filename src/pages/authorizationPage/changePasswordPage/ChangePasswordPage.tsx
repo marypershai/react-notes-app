@@ -20,6 +20,14 @@ export const ChangePasswordPage = () => {
     }
   };
 
+  const handleNewPassword = () => {
+    console.log('handleNewPassword');
+  };
+
+  const handleConfirmPassword = () => {
+    console.log('handleConfirmPassword');
+  };
+
   const cancelChangePassword = () => {
     navigate('/login');
   };
@@ -44,12 +52,14 @@ export const ChangePasswordPage = () => {
           fieldPlaceholder={loc.new_password}
           errorState={errorState}
           id={'new-pass'}
+          onChange={handleNewPassword}
         />
         <FormField
           fieldType={'password'}
           fieldPlaceholder={loc.confirm_password}
           errorState={errorState}
           id={'confirm-pas'}
+          onChange={handleConfirmPassword}
         />
         <Button text={loc.save} className={'login-btn'} onClick={savePassword} />
         <div className="link">

@@ -15,7 +15,7 @@ type NoteModalProps = {
   isEdit?: boolean;
 };
 
-export const NoteModal = props => {
+export const NoteModal = (props: NoteModalProps) => {
   const {language: loc} = useLocalization();
   const {modalVisibility, setModalVisibility} = useContext(AddNoteModalContext);
   const {modalContent, setModalContent} = useContext(EditNoteModalContext);
@@ -37,6 +37,10 @@ export const NoteModal = props => {
     console.log('change public');
   };
 
+  const handleNoteTitle = () => {
+    console.log('handleNoteTitle');
+  };
+
   return createPortal(
     <div className="modal" onClick={closeModal}>
       <div className="modal-dialog">
@@ -53,6 +57,7 @@ export const NoteModal = props => {
               fieldPlaceholder={loc.note_title}
               label={loc.note_title}
               value={noteObj.title}
+              onChange={handleNoteTitle}
             />
             <Textarea />
             <FormField
@@ -60,12 +65,14 @@ export const NoteModal = props => {
               fieldPlaceholder={loc.note_tags}
               label={loc.note_tags}
               value={noteObj.tags.join(', ')}
+              onChange={handleNoteTitle}
             />
             <FormField
               fieldType={'color'}
               fieldPlaceholder={loc.note_color}
               label={loc.note_color}
               value={noteObj.color}
+              onChange={handleNoteTitle}
             />
             <Switch value={noteObj.isPublic} onChange={changePublic}></Switch>
           </div>
