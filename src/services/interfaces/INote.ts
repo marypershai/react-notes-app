@@ -1,4 +1,4 @@
-export interface NoteInterface {
+export interface INote {
   id: number;
   isPublic: boolean;
   owner: string;

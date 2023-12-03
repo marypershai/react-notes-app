@@ -1,6 +1,6 @@
-import {Local} from '../interfaces/localization';
+import {ILocal} from '../interfaces/ILocal';
 
-export const en: Local = {
+export const en: ILocal = {
   username: 'Username',
   password: 'Password',
   login_title: 'Login',

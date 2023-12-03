@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
 import {Navigate} from 'react-router-dom';
-import {AuthContext} from '../contexts/AuthContext';
+import {useAppSelector} from '../hooks/redux';
 
 export function ProtectedRoute({children, redirectTo}) {
-  const {isAuthenticated} = useContext(AuthContext);
+  const {isAuth} = useAppSelector(state => state.auth);
 
-  return isAuthenticated ? children : <Navigate to={redirectTo} />;
+  return isAuth ? children : <Navigate to={redirectTo} />;
 }

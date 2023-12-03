@@ -4,44 +4,31 @@ import {useLocalization} from '../../../services/hooks/UseLocalization';
 import {FormField} from '../../../components/formField/FormField';
 import {Button} from '../../../components/button/Button';
 import {LinkButton} from '../../../components/linkButton/LinkButton';
-import {useContext, useState} from 'react';
-import {AuthContext} from '../../../services/contexts/AuthContext';
+import {useState} from 'react';
+import {useAppDispatch, useAppSelector} from '../../../services/hooks/redux';
+import {fetchAuth} from '../../../services/store/reducers/ActionCreator';
+import {authSlice} from '../../../services/store/reducers/AuthSlice';
 
 export const LoginPage = () => {
   const {language: loc} = useLocalization();
   const navigate = useNavigate();
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const [errorState, setErrorState] = useState(false);
-  const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext);
+  const {isLoading, error} = useAppSelector(state => state.auth);
+  const dispatch = useAppDispatch();
 
-  const loginSubmit = () => {
+  const loginSubmit = async () => {
     const creds = {
       password,
       username,
     };
-    fetch('https://dull-pear-haddock-belt.cyclic.app/auth', {
-      method: 'POST',
-      body: JSON.stringify(creds),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response: Response) => response.json())
-      .then(json => {
-        localStorage.setItem('authToken', json.token);
-        setIsAuthenticated(true);
-        navigate('/public-notes', {replace: true});
-      })
-      .catch(() => {
-        setErrorState(true);
-        throw Error;
-      });
+    await dispatch(fetchAuth(creds));
+    navigate('/public-notes', {replace: true});
   };
 
   const handleUsername = event => {
     setUserName(event.target.value);
-    setErrorState(false);
+    dispatch(authSlice.actions.authChangeErrorState());
   };
 
   const handlePassword = event => {
@@ -55,17 +42,18 @@ export const LoginPage = () => {
   return (
     <div className="login">
       <h2 className="login-title">{loc.login_title}</h2>
+      {isLoading && <h1>Comming</h1>}
       <div className="login-form">
         <FormField
           fieldType={'text'}
           fieldPlaceholder={loc.username}
-          errorState={errorState}
+          errorState={error}
           onChange={handleUsername}
         />
         <FormField
           fieldType={'password'}
           fieldPlaceholder={loc.password}
-          errorState={errorState}
+          errorState={error}
           onChange={handlePassword}
         />
         <Button text={loc.submit} className={'login-btn'} onClick={loginSubmit} />

@@ -1,4 +1,4 @@
-export interface Local {
+export interface ILocal {
   username: string;
   password: string;
   login_title: string;
@@ -30,7 +30,7 @@ export interface Local {
   edit_note_title: string;
 }
 
-export interface Localization {
-  en: Local;
-  ru: Local;
+export interface ILocalization {
+  en: ILocal;
+  ru: ILocal;
 }
