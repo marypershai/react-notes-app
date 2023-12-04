@@ -30,7 +30,6 @@ export const NoteModal = (props: NoteModalProps) => {
   const [noteColor, setNoteColor] = useState(noteObj.color);
   const [noteIsPublic, setNoteIsPublic] = useState(noteObj.isPublic);
   const noteId = useId();
-  const {notes} = useAppSelector(state => state.privateNotes);
   const dispatch = useAppDispatch();
 
   const closeModal = (event: React.MouseEvent) => {
