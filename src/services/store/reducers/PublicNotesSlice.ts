@@ -1,15 +1,18 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {INote} from '../../interfaces/INote';
+import {mockNotes} from '../../data/notes';
 
 interface PublicNoteState {
   notes: INote[];
   isLoading: boolean;
   error: string;
+  favoritesNotes: INote[];
 }
 
 const initialState: PublicNoteState = {
   isLoading: false,
-  notes: [],
+  notes: [...mockNotes],
+  favoritesNotes: [],
   error: '',
 };
 

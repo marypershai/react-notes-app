@@ -11,7 +11,6 @@ import {Switch} from '../../switch/Switch';
 import {EditNoteModalContext} from '../../../services/contexts/EditNoteModalContext';
 import {simpleNote} from '../../../services/data/simpleNote';
 import {useAppDispatch, useAppSelector} from '../../../services/hooks/redux';
-import {publicNotesSlice} from '../../../services/store/reducers/PublicNotesSlice';
 import {privateNotesSlice} from '../../../services/store/reducers/PrivateNotesSlice';
 
 type NoteModalProps = {
@@ -67,7 +66,7 @@ export const NoteModal = (props: NoteModalProps) => {
 
   const saveNote = event => {
     const note = {
-      id: +noteId,
+      id: noteId,
       isPublic: noteIsPublic,
       owner: 'No owner',
       tags: noteTags,
@@ -75,7 +74,11 @@ export const NoteModal = (props: NoteModalProps) => {
       title: noteTitle,
       color: noteColor,
     };
-    dispatch(privateNotesSlice.actions.addNewNote(note));
+    if (!isEdit) {
+      dispatch(privateNotesSlice.actions.addNewNote(note));
+    } else {
+      console.log('edit');
+    }
     closeModal(event);
   };
 

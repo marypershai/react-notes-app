@@ -6,12 +6,13 @@ interface AuthState {
   error: string;
   isAuth: boolean;
 }
+const isAuthLocalStorage = !!localStorage.getItem('authToken');
 
 const initialState: AuthState = {
   error: '',
   isLoading: false,
   token: '',
-  isAuth: false,
+  isAuth: isAuthLocalStorage,
 };
 
 export const authSlice = createSlice({

@@ -21,7 +21,7 @@ export const Note = (props: NoteProps) => {
   const {modalVisibility, setModalVisibility} = useContext(DeleteNoteModalContext);
   const {modalContent, setModalContent} = useContext(EditNoteModalContext);
   const [, setSearchParams] = useSearchParams();
-  const [isFavorite, setIsFavorite] = useState(note.isFavorite || false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const deleteNote = (event: React.MouseEvent<HTMLElement>): void => {
     if (event.target && event.target === event.currentTarget) {
@@ -44,8 +44,8 @@ export const Note = (props: NoteProps) => {
   };
 
   const addToFavorites = () => {
-    note.isFavorite = !isFavorite;
     setIsFavorite(() => !isFavorite);
+    console.log('add to favorite');
   };
 
   return (

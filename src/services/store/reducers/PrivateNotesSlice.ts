@@ -32,6 +32,13 @@ export const privateNotesSlice = createSlice({
     addNewNote(state, action: PayloadAction<INote>) {
       state.notes = [...state.notes, action.payload];
     },
+    editNote(state, action: PayloadAction<INote>) {
+      state.notes.forEach(note => {
+        if (note.id === action.payload.id) {
+          note = {...action.payload};
+        }
+      });
+    },
   },
 });
 

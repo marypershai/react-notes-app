@@ -1,7 +1,7 @@
 import {useLocalization} from '../../services/hooks/UseLocalization';
 import {mockNotes} from '../../services/data/notes';
 import {INote} from '../../services/interfaces/INote';
-import React, {useContext, useEffect, useMemo, useState} from 'react';
+import React, {useContext, useEffect, useLayoutEffect, useMemo, useState} from 'react';
 import {AddNoteModalContext} from '../../services/contexts/AddNoteModalContext';
 import {Button} from '../button/Button';
 import {NoteModal} from '../modals/addNoteModal/NoteModal';
@@ -22,12 +22,12 @@ type NotesListProps = {
 export const NotesList = (props: NotesListProps) => {
   const {isPublic} = props;
   const {language: loc} = useLocalization();
-  const mockNotesList = useMemo(() => [...mockNotes], []);
   const {modalVisibility, setModalVisibility} = useContext(AddNoteModalContext);
   const {modalVisibility: deleteModalVisibility} = useContext(DeleteNoteModalContext);
   const {modalContent} = useContext(EditNoteModalContext);
-  const favoritesNotes = mockNotesList.filter((note: INote) => note.isFavorite);
   const {notes: privateNotes} = useAppSelector(state => state.privateNotes);
+  const {notes: publicNotes} = useAppSelector(state => state.publicNotes);
+  const {favoritesNotes: favoritesNotes} = useAppSelector(state => state.publicNotes);
   const [noteList, setNoteList] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -35,17 +35,17 @@ export const NotesList = (props: NotesListProps) => {
   const noteId: string = searchParams.get('noteId');
   const isFavorites: string = searchParams.get('favorites');
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isPublic) {
       if (isFavorites) {
         setNoteList(favoritesNotes);
       } else {
-        setNoteList(mockNotesList);
+        setNoteList(publicNotes);
       }
     } else {
       setNoteList(privateNotes);
     }
-  }, [isFavorites, isPublic, favoritesNotes, mockNotesList, privateNotes]);
+  }, [isFavorites, isPublic, favoritesNotes, publicNotes, privateNotes]);
 
   const openAddNewNoteModal = () => {
     setModalVisibility(() => !modalVisibility);
