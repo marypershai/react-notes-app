@@ -1,10 +1,10 @@
 import React, {createContext, PropsWithChildren, useMemo, useState} from 'react';
-import {NoteInterface} from '../interfaces/note';
+import {INote} from '../interfaces/INote';
 import {simpleNote} from '../data/simpleNote';
 
 type EditNoteContentType = {
   visibility: boolean;
-  note: NoteInterface;
+  note: INote;
 };
 
 export type EditNoteModalContextType = {

@@ -1,11 +1,11 @@
-import {NoteInterface} from '../interfaces/note';
+import {INote} from '../interfaces/INote';
 
-export const simpleNote: NoteInterface = {
+export const simpleNote: INote = {
   id: 0,
   isPublic: false,
-  owner: 'No owner',
+  owner: '',
   tags: [],
-  text: 'No text',
-  title: 'No title',
-  color: '#fff',
+  text: '',
+  title: '',
+  color: '#ffffff',
 };
