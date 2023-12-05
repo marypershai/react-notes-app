@@ -42,5 +42,11 @@ export const authSlice = createSlice({
     },
   },
 });
-
+export const {
+  authFetching,
+  authFetchingSuccess,
+  authFetchingError,
+  authChangeErrorState,
+  authLogout,
+} = authSlice.actions;
 export default authSlice.reducer;

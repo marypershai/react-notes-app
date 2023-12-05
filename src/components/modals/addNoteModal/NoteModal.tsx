@@ -75,7 +75,7 @@ export const NoteModal = (props: NoteModalProps) => {
       color: noteColor,
     };
     if (!isEdit) {
-      dispatch(privateNotesSlice.actions.addNewNote(note));
+      dispatch(addNewNote(note));
     } else {
       console.log('edit');
     }

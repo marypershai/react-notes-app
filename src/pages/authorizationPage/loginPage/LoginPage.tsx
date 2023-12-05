@@ -7,7 +7,7 @@ import {LinkButton} from '../../../components/linkButton/LinkButton';
 import {useState} from 'react';
 import {useAppDispatch, useAppSelector} from '../../../services/hooks/redux';
 import {fetchAuth} from '../../../services/store/reducers/ActionCreator';
-import {authSlice} from '../../../services/store/reducers/AuthSlice';
+import {authChangeErrorState} from '../../../services/store/reducers/AuthSlice';
 
 export const LoginPage = () => {
   const {language: loc} = useLocalization();
@@ -28,7 +28,7 @@ export const LoginPage = () => {
 
   const handleUsername = event => {
     setUserName(event.target.value);
-    dispatch(authSlice.actions.authChangeErrorState());
+    dispatch(authChangeErrorState);
   };
 
   const handlePassword = event => {

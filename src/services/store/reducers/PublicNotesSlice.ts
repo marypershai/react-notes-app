@@ -35,4 +35,6 @@ export const publicNotesSlice = createSlice({
   },
 });
 
+export const {publicNotesFetching, publicNotesFetchingSuccess, publicNotesFetchingError} =
+  publicNotesSlice.actions;
 export default publicNotesSlice.reducer;

@@ -3,7 +3,7 @@ import './Menu.css';
 import {useLocalization} from '../../services/hooks/UseLocalization';
 import {LinkButton} from '../linkButton/LinkButton';
 import {useAppDispatch} from '../../services/hooks/redux';
-import {authSlice} from '../../services/store/reducers/AuthSlice';
+import {authLogout} from '../../services/store/reducers/AuthSlice';
 
 export const Menu = () => {
   const {language: loc} = useLocalization();
@@ -11,7 +11,7 @@ export const Menu = () => {
   const dispatch = useAppDispatch();
 
   const logout = () => {
-    dispatch(authSlice.actions.authLogout());
+    dispatch(authLogout);
     localStorage.removeItem('authToken');
     navigate('/login', {replace: true});
   };

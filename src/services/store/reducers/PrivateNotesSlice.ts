@@ -41,5 +41,11 @@ export const privateNotesSlice = createSlice({
     },
   },
 });
-
+export const {
+  privateNotesFetching,
+  privateNotesFetchingSuccess,
+  privateNotesFetchingError,
+  addNewNote,
+  editNote,
+} = privateNotesSlice.actions;
 export default privateNotesSlice.reducer;
