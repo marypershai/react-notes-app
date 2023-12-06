@@ -6,13 +6,16 @@ import {
   publicNotesFetchingError,
   publicNotesFetchingSuccess,
 } from './PublicNotesSlice';
+import {useAppSelector} from '../../hooks/redux';
+
+const BASE_URL = 'https://dull-pear-haddock-belt.cyclic.app';
 
 export const fetchAuth = creds => async (dispatch: AppDispatch) => {
   try {
     dispatch(authFetching);
     const response = await axios({
       method: 'POST',
-      url: 'https://dull-pear-haddock-belt.cyclic.app/auth',
+      url: `${BASE_URL}/auth`,
       data: creds,
     });
     dispatch(authFetchingSuccess(response.data.token));
@@ -22,12 +25,13 @@ export const fetchAuth = creds => async (dispatch: AppDispatch) => {
   }
 };
 
-export const fetchPublicNotes = () => async (dispatch: AppDispatch) => {
+export const fetchPublicNotes = token => async (dispatch: AppDispatch) => {
   try {
-    dispatch(publicNotesFetching);
+    dispatch(publicNotesFetching());
     const response = await axios({
       method: 'GET',
-      url: 'https://dull-pear-haddock-belt.cyclic.app/auth',
+      url: `${BASE_URL}/notes?type=public`,
+      headers: {Authorization: `Bearer ${token}`, 'Content-type': 'application/json'},
     });
     dispatch(publicNotesFetchingSuccess(response.data));
   } catch (e) {

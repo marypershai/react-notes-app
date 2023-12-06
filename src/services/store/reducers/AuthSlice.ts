@@ -6,12 +6,13 @@ interface AuthState {
   error: string;
   isAuth: boolean;
 }
-const isAuthLocalStorage = !!localStorage.getItem('authToken');
+const initialToken = localStorage.getItem('authToken');
+const isAuthLocalStorage = !!initialToken;
 
 const initialState: AuthState = {
   error: '',
   isLoading: false,
-  token: '',
+  token: initialToken,
   isAuth: isAuthLocalStorage,
 };
 
