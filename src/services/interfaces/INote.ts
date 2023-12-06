@@ -1,5 +1,5 @@
-export interface NoteInterface {
-  id: number;
+export interface INote {
+  id: number | string;
   isPublic: boolean;
   owner: string;
   tags: string[];

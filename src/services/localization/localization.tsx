@@ -1,8 +1,8 @@
 import {en} from './en';
 import {ru} from './ru';
-import {Localization} from '../interfaces/localization';
+import {ILocalization} from '../interfaces/ILocal';
 
-export const locals: Localization = {
+export const locals: ILocalization = {
   en,
   ru,
 };

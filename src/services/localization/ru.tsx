@@ -1,6 +1,6 @@
-import {Local} from '../interfaces/localization';
+import {ILocal} from '../interfaces/ILocal';
 
-export const ru: Local = {
+export const ru: ILocal = {
   username: 'Имя Пользователя',
   password: 'Пароль',
   login_title: 'Вход',

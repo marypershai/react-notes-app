@@ -1,6 +1,6 @@
-import {NoteInterface} from '../interfaces/note';
+import {INote} from '../interfaces/INote';
 
-export const mockNotes: NoteInterface[] = [
+export const mockNotes: INote[] = [
   {
     color: 'lime',
     isPublic: false,
