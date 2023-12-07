@@ -2,30 +2,36 @@ import {useLocalization} from '../../../services/hooks/UseLocalization';
 import {useNavigate} from 'react-router-dom';
 import {FormField} from '../../../components/formField/FormField';
 import {Button} from '../../../components/button/Button';
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {LinkButton} from '../../../components/linkButton/LinkButton';
 import './ChangePasswordPage.css';
+import {useAppDispatch, useAppSelector} from '../../../services/hooks/redux';
+import {changePassword} from '../../../services/store/reducers/ActionCreator';
 
 export const ChangePasswordPage = () => {
   const {language: loc} = useLocalization();
-  const [errorState, setErrorState] = useState(false);
+  const [error, setErrorState] = useState<boolean>(false);
+  const [newPassword, setNewPassword] = useState<string>('');
+  const [confirmedPassword, setConfirmedPassword] = useState<string>('');
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const {token} = useAppSelector(state => state.auth);
 
-  const savePassword = () => {
+  const savePassword = async (event: React.MouseEvent<HTMLElement>): Promise<void> => {
+    event.preventDefault();
     checkPassword();
-    if (errorState) {
+    if (!error && newPassword && confirmedPassword) {
+      await dispatch(changePassword(newPassword, token));
       navigate('/login');
-    } else {
-      return;
     }
   };
 
-  const handleNewPassword = () => {
-    console.log('handleNewPassword');
+  const handleNewPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewPassword(event.target.value);
   };
 
-  const handleConfirmPassword = () => {
-    console.log('handleConfirmPassword');
+  const handleConfirmPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setConfirmedPassword(event.target.value);
   };
 
   const cancelChangePassword = () => {
@@ -33,13 +39,16 @@ export const ChangePasswordPage = () => {
   };
 
   const checkPassword = () => {
-    const newPassword: string = (document.getElementById('new-pass') as HTMLInputElement).value;
-    const confirmedPassword: string = (document.getElementById('confirm-pas') as HTMLInputElement)
-      .value;
-    if (newPassword !== confirmedPassword || newPassword === '') {
-      setErrorState(() => true);
+    const isPasswordMatch: boolean =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/.test(newPassword);
+    if (isPasswordMatch) {
+      if (newPassword === confirmedPassword) {
+        setErrorState(false);
+      } else {
+        setErrorState(true);
+      }
     } else {
-      setErrorState(() => false);
+      setErrorState(true);
     }
   };
 
@@ -50,14 +59,14 @@ export const ChangePasswordPage = () => {
         <FormField
           fieldType={'password'}
           fieldPlaceholder={loc.new_password}
-          errorState={errorState}
+          errorState={error}
           id={'new-pass'}
           onChange={handleNewPassword}
         />
         <FormField
           fieldType={'password'}
           fieldPlaceholder={loc.confirm_password}
-          errorState={errorState}
+          errorState={error}
           id={'confirm-pas'}
           onChange={handleConfirmPassword}
         />

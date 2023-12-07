@@ -9,6 +9,7 @@ import {useAppDispatch, useAppSelector} from '../../../services/hooks/redux';
 import {fetchAuth} from '../../../services/store/reducers/ActionCreator';
 import {authChangeErrorState} from '../../../services/store/reducers/AuthSlice';
 import Spinner from '../../../components/spinner/Spinner';
+import {IAuth} from '../../../services/interfaces/IAuth';
 
 export const LoginPage = () => {
   const {language: loc} = useLocalization();
@@ -19,7 +20,7 @@ export const LoginPage = () => {
   const dispatch = useAppDispatch();
 
   const loginSubmit = async () => {
-    const creds = {
+    const creds: IAuth = {
       password,
       username,
     };

@@ -20,13 +20,12 @@ export const Note = (props: NoteProps) => {
   const {note, isPublic, forDetailsPage} = props;
   const {modalContent: deleteModalContent, setModalContent: setDeleteModalContent} =
     useContext(DeleteNoteModalContext);
-  const {modalContent, setModalContent} = useContext(EditNoteModalContext);
+  const {setModalContent} = useContext(EditNoteModalContext);
   const [, setSearchParams] = useSearchParams();
   const [isFavorite, setIsFavorite] = useState(false);
 
   const deleteNote = (event: React.MouseEvent<HTMLElement>): void => {
     if (event.target && event.target === event.currentTarget) {
-      console.log('delete');
       setDeleteModalContent(prev => ({
         visibility: true,
         note,
@@ -39,12 +38,11 @@ export const Note = (props: NoteProps) => {
       visibility: !prev.visibility,
       note,
     }));
-    console.log('note', note);
   };
 
   const readMore = () => {
     setSearchParams(searchParams => {
-      searchParams.set('noteId', note.id.toString());
+      searchParams.set('noteId', note.id!.toString());
       return searchParams;
     });
   };

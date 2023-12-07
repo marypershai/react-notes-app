@@ -6,17 +6,17 @@ import {
   publicNotesFetchingError,
   publicNotesFetchingSuccess,
 } from './PublicNotesSlice';
-import {useAppSelector} from '../../hooks/redux';
 import {
   privateNotesFetching,
   privateNotesFetchingError,
   privateNotesFetchingSuccess,
 } from './PrivateNotesSlice';
 import {INote} from '../../interfaces/INote';
+import {IAuth} from '../../interfaces/IAuth';
 
 const BASE_URL = 'https://dull-pear-haddock-belt.cyclic.app';
 
-export const fetchAuth = creds => async (dispatch: AppDispatch) => {
+export const fetchAuth = (creds: IAuth) => async (dispatch: AppDispatch) => {
   try {
     dispatch(authFetching);
     const response = await axios({
@@ -30,6 +30,20 @@ export const fetchAuth = creds => async (dispatch: AppDispatch) => {
     dispatch(authFetchingError(e.message));
   }
 };
+
+export const changePassword =
+  (newPassword: string, token: string) => async (dispatch: AppDispatch) => {
+    try {
+      const response = await axios({
+        method: 'PUT',
+        url: `${BASE_URL}/auth`,
+        data: {password: newPassword},
+        headers: {Authorization: `Bearer ${token}`, 'Content-type': 'application/json'},
+      });
+    } catch (e) {
+      dispatch(authFetchingError(e.message));
+    }
+  };
 
 export const fetchPublicNotes = (token: string) => async (dispatch: AppDispatch) => {
   try {

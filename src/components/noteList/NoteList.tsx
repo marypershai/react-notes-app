@@ -28,7 +28,7 @@ export const NotesList = (props: NotesListProps) => {
   const {notes: privateNotes} = useAppSelector(state => state.privateNotes);
   const {notes: publicNotes} = useAppSelector(state => state.publicNotes);
   const {favoritesNotes: favoritesNotes} = useAppSelector(state => state.publicNotes);
-  const [noteList, setNoteList] = useState([]);
+  const [noteList, setNoteList] = useState<INote[]>([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -89,7 +89,7 @@ export const NotesList = (props: NotesListProps) => {
             return <Note note={noteItem} key={noteItem.id} isPublic={isPublic}></Note>;
           })}
           {deleteModalVisibility.visibility ? <DeleteModal /> : ''}
-          {modalContent.visibility ? <NoteModal isEdit note={modalContent.note} /> : ''}
+          {modalContent.visibility ? <NoteModal isEdit /> : ''}
         </div>
       </div>
       {noteId ? <Outlet /> : ''}
