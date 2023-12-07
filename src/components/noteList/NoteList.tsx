@@ -23,7 +23,7 @@ export const NotesList = (props: NotesListProps) => {
   const {isPublic} = props;
   const {language: loc} = useLocalization();
   const {modalVisibility, setModalVisibility} = useContext(AddNoteModalContext);
-  const {modalVisibility: deleteModalVisibility} = useContext(DeleteNoteModalContext);
+  const {modalContent: deleteModalVisibility} = useContext(DeleteNoteModalContext);
   const {modalContent} = useContext(EditNoteModalContext);
   const {notes: privateNotes} = useAppSelector(state => state.privateNotes);
   const {notes: publicNotes} = useAppSelector(state => state.publicNotes);
@@ -32,8 +32,8 @@ export const NotesList = (props: NotesListProps) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const noteId: string = searchParams.get('noteId');
-  const isFavorites: string = searchParams.get('favorites');
+  const noteId: string = searchParams.get('noteId') || '';
+  const isFavorites: string = searchParams.get('favorites') || '';
 
   useLayoutEffect(() => {
     if (isPublic) {
@@ -88,7 +88,7 @@ export const NotesList = (props: NotesListProps) => {
           {noteList.map((noteItem: INote) => {
             return <Note note={noteItem} key={noteItem.id} isPublic={isPublic}></Note>;
           })}
-          {deleteModalVisibility ? <DeleteModal /> : ''}
+          {deleteModalVisibility.visibility ? <DeleteModal /> : ''}
           {modalContent.visibility ? <NoteModal isEdit note={modalContent.note} /> : ''}
         </div>
       </div>

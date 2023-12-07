@@ -1,7 +1,7 @@
 export interface INote {
-  id: number | string;
+  id?: string;
   isPublic: boolean;
-  owner: string;
+  owner?: string;
   tags: string[];
   text: string;
   title: string;

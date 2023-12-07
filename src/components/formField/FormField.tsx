@@ -10,7 +10,7 @@ type FormFieldProps = {
   label?: string;
   id?: string;
   value?: string;
-  onChange: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const FormField = (props: FormFieldProps) => {

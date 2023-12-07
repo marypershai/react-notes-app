@@ -11,7 +11,12 @@ import {Switch} from '../../switch/Switch';
 import {EditNoteModalContext} from '../../../services/contexts/EditNoteModalContext';
 import {simpleNote} from '../../../services/data/simpleNote';
 import {useAppDispatch, useAppSelector} from '../../../services/hooks/redux';
-import {privateNotesSlice} from '../../../services/store/reducers/PrivateNotesSlice';
+import {INote} from '../../../services/interfaces/INote';
+import {
+  addPrivateNote,
+  editPrivateNote,
+  fetchPrivateNotes,
+} from '../../../services/store/reducers/ActionCreator';
 
 type NoteModalProps = {
   isEdit?: boolean;
@@ -28,7 +33,7 @@ export const NoteModal = (props: NoteModalProps) => {
   const [noteTags, setNoteTags] = useState(noteObj.tags);
   const [noteColor, setNoteColor] = useState(noteObj.color);
   const [noteIsPublic, setNoteIsPublic] = useState(noteObj.isPublic);
-  const noteId = useId();
+  const {token} = useAppSelector(state => state.auth);
   const dispatch = useAppDispatch();
 
   const closeModal = (event: React.MouseEvent) => {
@@ -46,40 +51,45 @@ export const NoteModal = (props: NoteModalProps) => {
     setNoteIsPublic(!noteIsPublic);
   };
 
-  const handleNoteTitle = event => {
+  const handleNoteTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNoteTitle(event.target.value);
   };
 
-  const handleNoteText = event => {
+  const handleNoteText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setNoteText(event.target.value);
   };
 
-  const handleNoteTags = event => {
+  const handleNoteTags = (event: React.ChangeEvent<HTMLInputElement>) => {
     const tagsStr: string = event.target.value;
     const tagsArr: string[] = tagsStr.split(' ');
     setNoteTags(tagsArr);
   };
 
-  const handleNoteColor = event => {
+  const handleNoteColor = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNoteColor(event.target.value);
   };
 
-  const saveNote = event => {
-    const note = {
-      id: noteId,
+  const saveNote = async (event: React.MouseEvent<HTMLElement>) => {
+    const note: INote = {
       isPublic: noteIsPublic,
-      owner: 'No owner',
       tags: noteTags,
       text: noteText,
       title: noteTitle,
       color: noteColor,
     };
-    if (!isEdit) {
-      dispatch(addNewNote(note));
+    if (isEdit) {
+      note.id = noteObj.id;
+      await dispatch(editPrivateNote(token, note));
     } else {
-      console.log('edit');
+      await dispatch(addPrivateNote(token, note));
     }
-    closeModal(event);
+    if (isEdit) {
+      setModalContent(prev => ({
+        visibility: !prev.visibility,
+        note: prev.note,
+      }));
+    } else setModalVisibility(() => !modalVisibility);
+    await dispatch(fetchPrivateNotes(token));
   };
 
   return createPortal(

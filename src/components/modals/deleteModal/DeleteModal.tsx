@@ -5,18 +5,31 @@ import React, {useContext} from 'react';
 import {Button} from '../../button/Button';
 import {LinkButton} from '../../linkButton/LinkButton';
 import {DeleteNoteModalContext} from '../../../services/contexts/DeleteNoteModalContext';
+import {useAppDispatch, useAppSelector} from '../../../services/hooks/redux';
+import {deletePrivateNote, fetchPrivateNotes} from '../../../services/store/reducers/ActionCreator';
 
-type DeleteModalProps = {
-  key: number;
-};
-export const DeleteModal = (props: DeleteModalProps) => {
+export const DeleteModal = () => {
   const {language: loc} = useLocalization();
-  const {modalVisibility, setModalVisibility} = useContext(DeleteNoteModalContext);
+  const {modalContent, setModalContent} = useContext(DeleteNoteModalContext);
+  const dispatch = useAppDispatch();
+  const {token} = useAppSelector(state => state.auth);
 
   const closeModal = (event: React.MouseEvent) => {
     if (event.target === event.currentTarget) {
-      setModalVisibility(() => !modalVisibility);
+      setModalContent(prev => ({
+        visibility: !prev.visibility,
+        note: prev.note,
+      }));
     }
+  };
+
+  const deleteNote = async (event: React.MouseEvent) => {
+    await dispatch(deletePrivateNote(token, modalContent.note.id!));
+    await dispatch(fetchPrivateNotes(token));
+    setModalContent(prev => ({
+      visibility: !prev.visibility,
+      note: prev.note,
+    }));
   };
   return createPortal(
     <div className="modal" onClick={closeModal}>
@@ -33,7 +46,7 @@ export const DeleteModal = (props: DeleteModalProps) => {
           </div>
 
           <div className="modal-buttons">
-            <Button text={loc.delete} onClick={closeModal} />
+            <Button text={loc.delete} onClick={deleteNote} />
             <LinkButton text={loc.cancel} onClick={closeModal} />
           </div>
         </div>
