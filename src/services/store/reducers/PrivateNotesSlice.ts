@@ -1,16 +1,19 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {INote} from '../../interfaces/INote';
+import {simpleNote} from '../../data/simpleNote';
 
 interface PrivateNoteState {
   notes: INote[];
   isLoading: boolean;
   error: string;
+  note: INote;
 }
 
 const initialState: PrivateNoteState = {
   isLoading: false,
   notes: [],
   error: '',
+  note: simpleNote,
 };
 
 export const privateNotesSlice = createSlice({
@@ -39,6 +42,18 @@ export const privateNotesSlice = createSlice({
         }
       });
     },
+    privateNoteFetching(state) {
+      state.isLoading = true;
+    },
+    privateNoteFetchingSuccess(state, action: PayloadAction<INote>) {
+      state.isLoading = false;
+      state.error = '';
+      state.note = action.payload;
+    },
+    privateNoteFetchingError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 export const {
@@ -47,5 +62,8 @@ export const {
   privateNotesFetchingError,
   addNewNote,
   editNote,
+  privateNoteFetching,
+  privateNoteFetchingSuccess,
+  privateNoteFetchingError,
 } = privateNotesSlice.actions;
 export default privateNotesSlice.reducer;

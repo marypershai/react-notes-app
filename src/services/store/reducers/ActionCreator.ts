@@ -7,6 +7,9 @@ import {
   publicNotesFetchingSuccess,
 } from './PublicNotesSlice';
 import {
+  privateNoteFetching,
+  privateNoteFetchingError,
+  privateNoteFetchingSuccess,
   privateNotesFetching,
   privateNotesFetchingError,
   privateNotesFetchingSuccess,
@@ -105,5 +108,19 @@ export const deletePrivateNote = (token: string, id: string) => async (dispatch:
     });
   } catch (e) {
     dispatch(privateNotesFetchingError(e.message));
+  }
+};
+
+export const getPrivateNote = (token: string, id: string) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(privateNoteFetching);
+    const response = await axios({
+      method: 'GET',
+      url: `${BASE_URL}/notes?id=${id}`,
+      headers: {Authorization: `Bearer ${token}`, 'Content-type': 'application/json'},
+    });
+    dispatch(privateNoteFetchingSuccess(response.data));
+  } catch (e) {
+    dispatch(privateNoteFetchingError(e.message));
   }
 };

@@ -6,7 +6,7 @@ interface AuthState {
   error: string;
   isAuth: boolean;
 }
-const initialToken = localStorage.getItem('authToken');
+const initialToken = localStorage.getItem('authToken') || '';
 const isAuthLocalStorage = !!initialToken;
 
 const initialState: AuthState = {
@@ -35,8 +35,8 @@ export const authSlice = createSlice({
       state.error = action.payload;
       state.isAuth = false;
     },
-    authChangeErrorState(state) {
-      state.error = false;
+    authChangeErrorState(state, action: PayloadAction<string>) {
+      state.error = action.payload;
     },
     authLogout(state) {
       state.isAuth = false;

@@ -42,7 +42,7 @@ export const Note = (props: NoteProps) => {
 
   const readMore = () => {
     setSearchParams(searchParams => {
-      searchParams.set('noteId', note.id!.toString());
+      searchParams.set('noteId', note.id!);
       return searchParams;
     });
   };
