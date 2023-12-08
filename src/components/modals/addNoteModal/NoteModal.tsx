@@ -80,9 +80,9 @@ export const NoteModal = (props: NoteModalProps) => {
     };
     if (isEdit) {
       note.id = noteObj.id;
-      await dispatch(editPrivateNote(token, note));
+      dispatch(editPrivateNote(token, note));
     } else {
-      await dispatch(addPrivateNote(token, note));
+      dispatch(addPrivateNote(token, note));
     }
     if (isEdit) {
       setModalContent(prev => ({
@@ -90,7 +90,6 @@ export const NoteModal = (props: NoteModalProps) => {
         note: prev.note,
       }));
     } else setModalVisibility(() => !modalVisibility);
-    await dispatch(fetchPrivateNotes(token));
   };
 
   return createPortal(

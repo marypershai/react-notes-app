@@ -22,7 +22,7 @@ export const ChangePasswordPage = () => {
     event.preventDefault();
     checkPassword();
     if (!error && newPassword && confirmedPassword) {
-      await dispatch(changePassword(newPassword, token));
+      dispatch(changePassword(newPassword, token));
       navigate('/login');
     }
   };

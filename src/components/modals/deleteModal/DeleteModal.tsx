@@ -25,8 +25,7 @@ export const DeleteModal = () => {
   };
 
   const deleteNote = async (event: React.MouseEvent) => {
-    await dispatch(deletePrivateNote(token, modalContent.note.id!));
-    await dispatch(fetchPrivateNotes(token));
+    dispatch(deletePrivateNote(token, modalContent.note.id!));
     setModalContent(prev => ({
       visibility: !prev.visibility,
       note: prev.note,

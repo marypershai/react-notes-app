@@ -24,7 +24,7 @@ export const LoginPage = () => {
       password,
       username,
     };
-    await dispatch(fetchAuth(creds));
+    dispatch(fetchAuth(creds));
     navigate('/public-notes', {replace: true});
   };
 

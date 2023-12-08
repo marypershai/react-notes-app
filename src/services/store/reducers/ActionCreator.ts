@@ -83,6 +83,7 @@ export const addPrivateNote = (token: string, note: INote) => async (dispatch: A
       headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'},
       body: JSON.stringify(note),
     });
+    dispatch(fetchPrivateNotes(token));
   } catch (e) {
     dispatch(privateNotesFetchingError(e.message));
   }
@@ -95,6 +96,7 @@ export const editPrivateNote = (token: string, note: INote) => async (dispatch: 
       headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'},
       body: JSON.stringify(note),
     });
+    dispatch(fetchPrivateNotes(token));
   } catch (e) {
     dispatch(privateNotesFetchingError(e.message));
   }
@@ -106,6 +108,7 @@ export const deletePrivateNote = (token: string, id: string) => async (dispatch:
       method: 'DELETE',
       headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'},
     });
+    dispatch(fetchPrivateNotes(token));
   } catch (e) {
     dispatch(privateNotesFetchingError(e.message));
   }
