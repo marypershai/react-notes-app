@@ -1,21 +1,31 @@
 import React, {createContext, PropsWithChildren, useMemo, useState} from 'react';
+import {INote} from '../interfaces/INote';
+import {simpleNote} from '../data/simpleNote';
+
+type DeleteNoteContentType = {
+  visibility: boolean;
+  note: INote;
+};
 
 export type DeleteNoteModalContextType = {
-  modalVisibility: boolean;
-  setModalVisibility: React.Dispatch<React.SetStateAction<boolean>>;
+  modalContent: DeleteNoteContentType;
+  setModalContent: React.Dispatch<React.SetStateAction<DeleteNoteContentType>>;
 };
 
 export const DeleteNoteModalContext = createContext<DeleteNoteModalContextType>(null!);
 
 export function DeleteNoteModalContextProvider({children}: PropsWithChildren) {
-  const [modalVisibility, setModalVisibility] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<DeleteNoteContentType>({
+    visibility: false,
+    note: simpleNote,
+  });
 
   const value = useMemo(
     () => ({
-      modalVisibility,
-      setModalVisibility,
+      modalContent,
+      setModalContent,
     }),
-    [modalVisibility]
+    [modalContent]
   );
 
   return (

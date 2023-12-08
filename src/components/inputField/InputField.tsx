@@ -6,7 +6,7 @@ type InputFieldProps = {
   fieldPlaceholder: string;
   id?: string;
   value?: string;
-  onChange: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const InputField = (props: InputFieldProps) => {

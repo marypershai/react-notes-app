@@ -18,14 +18,18 @@ type NoteProps = {
 export const Note = (props: NoteProps) => {
   const {language: loc} = useLocalization();
   const {note, isPublic, forDetailsPage} = props;
-  const {modalVisibility, setModalVisibility} = useContext(DeleteNoteModalContext);
-  const {modalContent, setModalContent} = useContext(EditNoteModalContext);
+  const {modalContent: deleteModalContent, setModalContent: setDeleteModalContent} =
+    useContext(DeleteNoteModalContext);
+  const {setModalContent} = useContext(EditNoteModalContext);
   const [, setSearchParams] = useSearchParams();
   const [isFavorite, setIsFavorite] = useState(false);
 
   const deleteNote = (event: React.MouseEvent<HTMLElement>): void => {
     if (event.target && event.target === event.currentTarget) {
-      setModalVisibility(() => !modalVisibility);
+      setDeleteModalContent(() => ({
+        visibility: true,
+        note,
+      }));
     }
   };
 
@@ -38,7 +42,7 @@ export const Note = (props: NoteProps) => {
 
   const readMore = () => {
     setSearchParams(searchParams => {
-      searchParams.set('noteId', note.id.toString());
+      searchParams.set('noteId', note.id!);
       return searchParams;
     });
   };

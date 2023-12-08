@@ -11,7 +11,7 @@ interface PublicNoteState {
 
 const initialState: PublicNoteState = {
   isLoading: false,
-  notes: [...mockNotes],
+  notes: [],
   favoritesNotes: [],
   error: '',
 };
