@@ -7,12 +7,13 @@ import {LinkButton} from '../../linkButton/LinkButton';
 import {DeleteNoteModalContext} from '../../../services/contexts/DeleteNoteModalContext';
 import {useAppDispatch, useAppSelector} from '../../../services/hooks/redux';
 import {deletePrivateNote, fetchPrivateNotes} from '../../../services/store/reducers/ActionCreator';
+import {selectToken} from '../../../services/store/store';
 
 export const DeleteModal = () => {
   const {language: loc} = useLocalization();
   const {modalContent, setModalContent} = useContext(DeleteNoteModalContext);
   const dispatch = useAppDispatch();
-  const {token} = useAppSelector(state => state.auth);
+  const {token} = useAppSelector(selectToken);
 
   const closeModal = (event: React.MouseEvent) => {
     if (event.target === event.currentTarget) {

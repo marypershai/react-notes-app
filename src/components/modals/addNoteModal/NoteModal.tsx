@@ -17,6 +17,7 @@ import {
   editPrivateNote,
   fetchPrivateNotes,
 } from '../../../services/store/reducers/ActionCreator';
+import {selectToken} from '../../../services/store/store';
 
 type NoteModalProps = {
   isEdit?: boolean;
@@ -33,7 +34,7 @@ export const NoteModal = (props: NoteModalProps) => {
   const [noteTags, setNoteTags] = useState(noteObj.tags);
   const [noteColor, setNoteColor] = useState(noteObj.color);
   const [noteIsPublic, setNoteIsPublic] = useState(noteObj.isPublic);
-  const {token} = useAppSelector(state => state.auth);
+  const {token} = useAppSelector(selectToken);
   const dispatch = useAppDispatch();
 
   const closeModal = (event: React.MouseEvent) => {

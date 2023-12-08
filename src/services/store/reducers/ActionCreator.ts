@@ -29,7 +29,7 @@ export const fetchAuth = (creds: IAuth) => async (dispatch: AppDispatch) => {
     });
     dispatch(authFetchingSuccess(response.data.token));
     localStorage.setItem('authToken', response.data.token);
-  } catch (e) {
+  } catch (e: unknown) {
     dispatch(authFetchingError(e.message));
   }
 };
@@ -41,7 +41,7 @@ export const changePassword =
         method: 'PUT',
         url: `${BASE_URL}/auth`,
         data: {password: newPassword},
-        headers: {Authorization: `Bearer ${token}`, 'Content-type': 'application/json'},
+        headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'},
       });
     } catch (e) {
       dispatch(authFetchingError(e.message));
@@ -54,7 +54,7 @@ export const fetchPublicNotes = (token: string) => async (dispatch: AppDispatch)
     const response = await axios({
       method: 'GET',
       url: `${BASE_URL}/notes?type=public`,
-      headers: {Authorization: `Bearer ${token}`, 'Content-type': 'application/json'},
+      headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'},
     });
     dispatch(publicNotesFetchingSuccess(response.data));
   } catch (e) {
@@ -68,7 +68,7 @@ export const fetchPrivateNotes = (token: string) => async (dispatch: AppDispatch
     const response = await axios({
       method: 'GET',
       url: `${BASE_URL}/notes?type=personal`,
-      headers: {Authorization: `Bearer ${token}`, 'Content-type': 'application/json'},
+      headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'},
     });
     dispatch(privateNotesFetchingSuccess(response.data));
   } catch (e) {
@@ -80,7 +80,7 @@ export const addPrivateNote = (token: string, note: INote) => async (dispatch: A
   try {
     const response = await fetch(`${BASE_URL}/notes`, {
       method: 'POST',
-      headers: {Authorization: `Bearer ${token}`, 'Content-type': 'application/json'},
+      headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'},
       body: JSON.stringify(note),
     });
   } catch (e) {
@@ -92,7 +92,7 @@ export const editPrivateNote = (token: string, note: INote) => async (dispatch: 
   try {
     const response = await fetch(`${BASE_URL}/notes?id=${note.id}`, {
       method: 'PUT',
-      headers: {Authorization: `Bearer ${token}`, 'Content-type': 'application/json'},
+      headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'},
       body: JSON.stringify(note),
     });
   } catch (e) {
@@ -104,7 +104,7 @@ export const deletePrivateNote = (token: string, id: string) => async (dispatch:
   try {
     const response = await fetch(`${BASE_URL}/notes?id=${id}`, {
       method: 'DELETE',
-      headers: {Authorization: `Bearer ${token}`, 'Content-type': 'application/json'},
+      headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'},
     });
   } catch (e) {
     dispatch(privateNotesFetchingError(e.message));
@@ -117,7 +117,7 @@ export const getPrivateNote = (token: string, id: string) => async (dispatch: Ap
     const response = await axios({
       method: 'GET',
       url: `${BASE_URL}/notes?id=${id}`,
-      headers: {Authorization: `Bearer ${token}`, 'Content-type': 'application/json'},
+      headers: {Authorization: `Bearer ${token}`, 'Content-Type': 'application/json'},
     });
     dispatch(privateNoteFetchingSuccess(response.data));
   } catch (e) {

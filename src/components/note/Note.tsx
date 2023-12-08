@@ -26,7 +26,7 @@ export const Note = (props: NoteProps) => {
 
   const deleteNote = (event: React.MouseEvent<HTMLElement>): void => {
     if (event.target && event.target === event.currentTarget) {
-      setDeleteModalContent(prev => ({
+      setDeleteModalContent(() => ({
         visibility: true,
         note,
       }));

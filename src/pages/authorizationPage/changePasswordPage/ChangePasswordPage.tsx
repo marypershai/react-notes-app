@@ -7,6 +7,7 @@ import {LinkButton} from '../../../components/linkButton/LinkButton';
 import './ChangePasswordPage.css';
 import {useAppDispatch, useAppSelector} from '../../../services/hooks/redux';
 import {changePassword} from '../../../services/store/reducers/ActionCreator';
+import {selectToken} from '../../../services/store/store';
 
 export const ChangePasswordPage = () => {
   const {language: loc} = useLocalization();
@@ -15,7 +16,7 @@ export const ChangePasswordPage = () => {
   const [confirmedPassword, setConfirmedPassword] = useState<string>('');
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const {token} = useAppSelector(state => state.auth);
+  const {token} = useAppSelector(selectToken);
 
   const savePassword = async (event: React.MouseEvent<HTMLElement>): Promise<void> => {
     event.preventDefault();
