@@ -2,9 +2,21 @@ nav {
   display: flex;
   justify-content: space-between;
   max-width: 1600px;
-  margin: 0 auto 40px auto;
-  min-width: 600px;
+  margin-bottom: 40px;
 }
+
+@media (max-width: 1000px) {
+  nav {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    max-width: 450px;
+  }
+}
+
 .nav-menu {
   display: flex;
   gap: 30px;

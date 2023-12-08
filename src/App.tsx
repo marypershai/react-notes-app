@@ -7,7 +7,7 @@ import {EditNoteModalContextProvider} from './services/contexts/EditNoteModalCon
 
 function App() {
   return (
-    <div>
+    <>
       <Menu />
       <DeleteNoteModalContextProvider>
         <AddNoteModalContextProvider>
@@ -16,7 +16,7 @@ function App() {
           </EditNoteModalContextProvider>
         </AddNoteModalContextProvider>
       </DeleteNoteModalContextProvider>
-    </div>
+    </>
   );
 }
 
